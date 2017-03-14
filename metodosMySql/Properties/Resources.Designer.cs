@@ -63,6 +63,16 @@ namespace metodosMySql.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap blank_user {
+            get {
+                object obj = ResourceManager.GetObject("blank_user", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap header {
             get {
                 object obj = ResourceManager.GetObject("header", resourceCulture);
@@ -76,6 +86,16 @@ namespace metodosMySql.Properties {
         internal static System.Drawing.Bitmap lit {
             get {
                 object obj = ResourceManager.GetObject("lit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap photo_icon {
+            get {
+                object obj = ResourceManager.GetObject("photo_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

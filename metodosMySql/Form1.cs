@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+
 namespace metodosMySql
 {
     public partial class Form1 : Form
@@ -24,6 +25,7 @@ namespace metodosMySql
    //***************************************************** salvar Bolsista *****************************************************************************//
         private void button1_Click(object sender, EventArgs e)
         {
+            //button7.Enabled = true;
             bool m =false, t=false, n=false ,ifce = false,outra = false,remunerado = false,voluntario = false;
             if (manha.Checked) { m = true; }
             if (tarde.Checked) { t = true; }
@@ -70,6 +72,11 @@ namespace metodosMySql
                     reader.Close();
                     comandoremunerado.ExecuteNonQuery();
                     MessageBox.Show("Salvo com sucesso, que Demais!");
+                    /*
+                    Form3 maisumform = new Form3(this, entradaCpf.Text);
+                    maisumform.ShowDialog();
+                    pictureBoxFoto.ImageLocation = @"Photos\" + entradaCpf.Text + ".jpg";
+                    */
                 }
 
 
@@ -87,8 +94,12 @@ namespace metodosMySql
                 MessageBox.Show("error.." + error.Message + "   Contate o suporte");
                 conectar.Close();
             }
-            
-                    }
+
+            Form3 maisumform = new Form3(this, entradaCpf.Text);
+            maisumform.ShowDialog();
+            pictureBoxFoto.ImageLocation = @"Photos\" + entradaCpf.Text + ".jpg";
+            //pictureBoxFoto.Load("http://i2.kym-cdn.com/photos/images/facebook/000/862/065/0e9.jpg");
+        }
  // ******************************************************* botao para buscar aluno ************************************************//
         private void button2_Click(object sender, EventArgs e)
         {
@@ -149,6 +160,8 @@ namespace metodosMySql
                         if (reader.GetBoolean("radioremunerado")) { radioremunerado.Checked = true; }
                         if (reader.GetBoolean("radiovoluntario")) { radiovoluntario.Checked = true; }
                         if (reader.GetBoolean("ativar")) { Ativar.Checked = true; }
+
+                        //pictureBoxFoto.ImageLocation = @"C:/Users/messyo/Desktop/github/triplexXx-master1.0-master/metodosMySql/Photos/5" + ".jpg";
 
 
                     }
@@ -253,6 +266,32 @@ namespace metodosMySql
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void pictureBoxFoto_Click(object sender, EventArgs e)
+        {
+            //Form4 maisumoutroform = new Form4(entradaCpf.Text);
+            //maisumoutroform.ShowDialog();
+        }
+
+//************************************************** Colocar imagem *********************************************
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonFoto_Click(object sender, EventArgs e)
+        {
+            Form3 maisumform = new Form3(this,entradaCpf.Text);
+            maisumform.ShowDialog();
+            pictureBoxFoto.ImageLocation = @"Photos\" + entradaCpf.Text + ".jpg";
+            
+        }
+
+        private void entradaCpf_TextChanged(object sender, EventArgs e)
         {
 
         }
