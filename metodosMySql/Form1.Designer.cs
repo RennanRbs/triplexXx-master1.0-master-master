@@ -95,6 +95,8 @@
             this.button5 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.label28 = new System.Windows.Forms.Label();
+            this.entradaID = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.entradaCodigo.SuspendLayout();
@@ -115,9 +117,9 @@
             // 
             this.entradaNome.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.entradaNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.entradaNome.Location = new System.Drawing.Point(72, 151);
+            this.entradaNome.Location = new System.Drawing.Point(62, 152);
             this.entradaNome.Name = "entradaNome";
-            this.entradaNome.Size = new System.Drawing.Size(403, 26);
+            this.entradaNome.Size = new System.Drawing.Size(377, 26);
             this.entradaNome.TabIndex = 1;
             // 
             // entradaBairro
@@ -148,7 +150,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(5, 149);
+            this.label1.Location = new System.Drawing.Point(5, 154);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 20);
             this.label1.TabIndex = 5;
@@ -207,7 +209,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(515, 147);
+            this.label6.Location = new System.Drawing.Point(515, 155);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 20);
             this.label6.TabIndex = 13;
@@ -216,7 +218,7 @@
             // entradaMatriula
             // 
             this.entradaMatriula.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.entradaMatriula.Location = new System.Drawing.Point(594, 147);
+            this.entradaMatriula.Location = new System.Drawing.Point(594, 155);
             this.entradaMatriula.Name = "entradaMatriula";
             this.entradaMatriula.Size = new System.Drawing.Size(127, 23);
             this.entradaMatriula.TabIndex = 14;
@@ -225,7 +227,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(339, 26);
+            this.label7.Location = new System.Drawing.Point(301, 9);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(311, 29);
             this.label7.TabIndex = 15;
@@ -235,11 +237,11 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(339, 82);
+            this.label8.Location = new System.Drawing.Point(302, 82);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(59, 20);
+            this.label8.Size = new System.Drawing.Size(27, 20);
             this.label8.TabIndex = 16;
-            this.label8.Text = "ID LIT";
+            this.label8.Text = "N°";
             // 
             // entradaIDLit
             // 
@@ -247,9 +249,9 @@
             this.entradaIDLit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.entradaIDLit.Font = new System.Drawing.Font("Microsoft Tai Le", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.entradaIDLit.ForeColor = System.Drawing.Color.White;
-            this.entradaIDLit.Location = new System.Drawing.Point(411, 82);
+            this.entradaIDLit.Location = new System.Drawing.Point(335, 82);
             this.entradaIDLit.Name = "entradaIDLit";
-            this.entradaIDLit.Size = new System.Drawing.Size(189, 24);
+            this.entradaIDLit.Size = new System.Drawing.Size(62, 24);
             this.entradaIDLit.TabIndex = 17;
             // 
             // label9
@@ -712,6 +714,7 @@
             this.Ativar.TabIndex = 66;
             this.Ativar.Text = "Desativar";
             this.Ativar.UseVisualStyleBackColor = true;
+            this.Ativar.CheckedChanged += new System.EventHandler(this.Ativar_CheckedChanged);
             // 
             // button5
             // 
@@ -719,9 +722,9 @@
             this.button5.BackgroundImage = global::metodosMySql.Properties.Resources.search_148820_960_720;
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(475, 150);
+            this.button5.Location = new System.Drawing.Point(449, 147);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(30, 28);
+            this.button5.Size = new System.Drawing.Size(34, 28);
             this.button5.TabIndex = 68;
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
@@ -741,12 +744,30 @@
             this.button2.BackColor = System.Drawing.SystemColors.Menu;
             this.button2.BackgroundImage = global::metodosMySql.Properties.Resources.search_148820_960_720;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(599, 73);
+            this.button2.Location = new System.Drawing.Point(403, 74);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(40, 38);
             this.button2.TabIndex = 11;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(544, 122);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(44, 20);
+            this.label28.TabIndex = 69;
+            this.label28.Text = "COD";
+            // 
+            // entradaID
+            // 
+            this.entradaID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.entradaID.Location = new System.Drawing.Point(594, 122);
+            this.entradaID.Name = "entradaID";
+            this.entradaID.Size = new System.Drawing.Size(102, 23);
+            this.entradaID.TabIndex = 70;
             // 
             // Form1
             // 
@@ -756,6 +777,8 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(737, 733);
+            this.Controls.Add(this.entradaID);
+            this.Controls.Add(this.label28);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Ativar);
@@ -855,7 +878,6 @@
         private System.Windows.Forms.TextBox entradaMatriula;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox entradaIDLit;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox entradaRg;
@@ -906,6 +928,9 @@
         private System.Windows.Forms.RadioButton radiovoluntario;
         private System.Windows.Forms.RadioButton radioremunerado;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox entradaID;
+        public System.Windows.Forms.TextBox entradaIDLit;
     }
 }
 
