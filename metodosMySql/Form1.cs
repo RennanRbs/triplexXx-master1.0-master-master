@@ -25,7 +25,7 @@ namespace metodosMySql
    //***************************************************** salvar Bolsista *****************************************************************************//
         private void button1_Click(object sender, EventArgs e)
         {
-            //button7.Enabled = true;
+            buttonFoto.Enabled = true;
             bool m =false, t=false, n=false ,ifce = false,outra = false,remunerado = false,voluntario = false;
             if (manha.Checked) { m = true; }
             if (tarde.Checked) { t = true; }
@@ -72,11 +72,11 @@ namespace metodosMySql
                     reader.Close();
                     comandoremunerado.ExecuteNonQuery();
                     MessageBox.Show("Salvo com sucesso, que Demais!");
-                    /*
+                    
                     Form3 maisumform = new Form3(this, entradaCpf.Text);
                     maisumform.ShowDialog();
                     pictureBoxFoto.ImageLocation = @"Photos\" + entradaCpf.Text + ".jpg";
-                    */
+                    
                 }
 
 
@@ -94,10 +94,10 @@ namespace metodosMySql
                 MessageBox.Show("error.." + error.Message + "   Contate o suporte");
                 conectar.Close();
             }
-
+            /*
             Form3 maisumform = new Form3(this, entradaCpf.Text);
             maisumform.ShowDialog();
-            pictureBoxFoto.ImageLocation = @"Photos\" + entradaCpf.Text + ".jpg";
+            pictureBoxFoto.ImageLocation = @"Photos\" + entradaCpf.Text + ".jpg";*/
             //pictureBoxFoto.Load("http://i2.kym-cdn.com/photos/images/facebook/000/862/065/0e9.jpg");
         }
  // ******************************************************* botao para buscar aluno ************************************************//
@@ -241,6 +241,11 @@ namespace metodosMySql
                     {
                         ((TextBox)(ctrl)).Text = String.Empty;
                     }
+
+                    if (ctrl is MaskedTextBox)
+                    {
+                        ((MaskedTextBox)(ctrl)).Text = String.Empty;
+                    }
                 }
                 entradaOBS.Text = "";
                 manha.Checked = false;
@@ -297,6 +302,11 @@ namespace metodosMySql
         }
 
         private void Ativar_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void entradaNome_TextChanged(object sender, EventArgs e)
         {
 
         }
