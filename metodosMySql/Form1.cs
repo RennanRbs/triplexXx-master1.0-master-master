@@ -71,17 +71,13 @@ namespace metodosMySql
                     MySqlCommand comandoremunerado = new MySqlCommand("INSERT INTO remunerado(bolsista_id,agencia,conta,orientador,fonte_bolsa,banco)VALUES (" + reader.GetString("id") + ", '"+entradaAgencia.Text+"', '"+entradaConta.Text+"', '"+entradaOrientador.Text+"','"+entradaFonteDaBolsa.Text+"', '"+entradaBanco.Text+"')", conectar);
                     reader.Close();
                     comandoremunerado.ExecuteNonQuery();
-                    MessageBox.Show("Salvo com sucesso, que Demais!");
+                    MessageBox.Show("Salvo com sucesso, que Topper!");
                     
                     Form3 maisumform = new Form3(this, entradaCpf.Text);
                     maisumform.ShowDialog();
                     pictureBoxFoto.ImageLocation = @"Photos\" + entradaCpf.Text + ".jpg";
                     
                 }
-
-
-
-
 
                 conectar.Close();
             }
@@ -103,6 +99,7 @@ namespace metodosMySql
  // ******************************************************* botao para buscar aluno ************************************************//
         private void button2_Click(object sender, EventArgs e)
         {
+            buttonFoto.Enabled = true;
             if (entradaIDLit.Text != "")
             {
                 try
@@ -161,7 +158,7 @@ namespace metodosMySql
                         if (reader.GetBoolean("radiovoluntario")) { radiovoluntario.Checked = true; }
                         if (reader.GetBoolean("ativar")) { Ativar.Checked = true; }
 
-                        //pictureBoxFoto.ImageLocation = @"C:/Users/messyo/Desktop/github/triplexXx-master1.0-master/metodosMySql/Photos/5" + ".jpg";
+                        pictureBoxFoto.ImageLocation = @"Photos\" + entradaCpf.Text + ".jpg";
 
 
                     }
@@ -277,8 +274,11 @@ namespace metodosMySql
 
         private void pictureBoxFoto_Click(object sender, EventArgs e)
         {
-            //Form4 maisumoutroform = new Form4(entradaCpf.Text);
-            //maisumoutroform.ShowDialog();
+            if (entradaCpf.Text != "")
+            {
+                Form4 maisumoutroform = new Form4(entradaCpf.Text);
+                maisumoutroform.ShowDialog();
+            }
         }
 
 //************************************************** Colocar imagem *********************************************

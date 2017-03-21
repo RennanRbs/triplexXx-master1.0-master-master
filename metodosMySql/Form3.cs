@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,15 +30,15 @@ namespace metodosMySql
         private void Form3_Load(object sender, EventArgs e)
         {
 
-            webcam = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            this.webcam = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             foreach (FilterInfo VideoCaptureDevice in webcam)
             {
                 comboBox1.Items.Add(VideoCaptureDevice.Name);
             }
-            comboBox1.SelectedIndex = 0;
-            camera = new VideoCaptureDevice(webcam[comboBox1.SelectedIndex].MonikerString);
-            camera.NewFrame += new NewFrameEventHandler(camera_NewFrame);
-            camera.Start();
+            //this.comboBox1.SelectedIndex = 0;
+            this.camera = new VideoCaptureDevice(webcam[0].MonikerString);
+            this.camera.NewFrame += new NewFrameEventHandler(camera_NewFrame);
+            this.camera.Start();
         }
 
         void camera_NewFrame(object sender, NewFrameEventArgs eventArgs)
@@ -48,7 +49,7 @@ namespace metodosMySql
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (camera.IsRunning)
+            if (this.camera.IsRunning)
             {
                 camera.Stop();
                 //saveFileDialog1.InitialDirectory = @"C:\Users\messyo\Desktop\github\triplexXx-master1.0-master\metodosMySql\Photos";
@@ -58,16 +59,24 @@ namespace metodosMySql
                     
                 }*/
                 //saveFileDialog1.FileName = this.CPF;
-                if (CPF != "")
+                if (this.CPF != "")
                 {
-                    pictureBox1.Image.Save(@"Photos\" + this.CPF + ".jpg");
+                    try
+                    {
+                        pictureBox1.Image.Save(@"Photos\" + this.CPF + ".jpg");
+                    }
+                    catch (Exception)
+                    {
+                        var folder = Directory.CreateDirectory("Photos\\");
+                        pictureBox1.Image.Save(@"Photos\" + this.CPF + ".jpg");
+                    }
                 }
 
-                
+
             }
             else
             {
-                camera.Start();
+                this.camera.Start();
             }
         }
 
@@ -83,13 +92,35 @@ namespace metodosMySql
         
         public void Form3_FormClosed(object sender, FormClosedEventArgs e)
         {
-            camera.Stop();
-            
+            this.camera.Stop();
+
         }
 
         private void saveFileDialog2_FileOk(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex != 0)
+            {
+                this.camera.Stop();
+                this.camera = new VideoCaptureDevice(webcam[comboBox1.SelectedIndex].MonikerString);
+                this.camera.NewFrame += new NewFrameEventHandler(camera_NewFrame);
+                this.camera.Start();
+            }
+            else
+            {
+                if (this.camera.IsRunning == true)
+                {
+                    this.camera.Stop();
+                    this.camera = new VideoCaptureDevice(webcam[comboBox1.SelectedIndex].MonikerString);
+                    this.camera.NewFrame += new NewFrameEventHandler(camera_NewFrame);
+                    this.camera.Start();
+                }
+
+            }
         }
     }
 }
