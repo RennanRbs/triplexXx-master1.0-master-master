@@ -26,7 +26,7 @@ namespace metodosMySql
         private void button1_Click(object sender, EventArgs e)
         {
             buttonFoto.Enabled = true;
-            bool m =false, t=false, n=false ,ifce = false,outra = false,remunerado = false,voluntario = false;
+            bool m = false, t = false, n = false, ifce = false, outra = false, remunerado = false, voluntario = false;
             if (manha.Checked) { m = true; }
             if (tarde.Checked) { t = true; }
             if (noite.Checked) { n = true; }
@@ -43,8 +43,8 @@ namespace metodosMySql
 
                 MySqlCommand comandoPessoa = new MySqlCommand("INSERT INTO Pessoa(nome,email,cpf,celular,cod_digital) VALUES('" + entradaNome.Text + "','" + entradaEmail.Text + "','" + entradaCpf.Text + "','" + entradaCelular.Text + "', '" + entradaID.Text + "' )", conectar);
                 MySqlCommand comandoselect = new MySqlCommand(" select id from pessoa order by id DESC limit 1", conectar);
-                MySqlCommand comandoselectprofessor = new MySqlCommand("SELECT id FROM bolsista order by id desc limit 1",conectar);
-                MySqlCommand comandoselectremunerado = new MySqlCommand("SELECT id FROM bolsista order by id desc limit 1",conectar);
+                MySqlCommand comandoselectprofessor = new MySqlCommand("SELECT id FROM bolsista order by id desc limit 1", conectar);
+                MySqlCommand comandoselectremunerado = new MySqlCommand("SELECT id FROM bolsista order by id desc limit 1", conectar);
 
                 comandoPessoa.ExecuteNonQuery();
 
@@ -53,36 +53,37 @@ namespace metodosMySql
                 if (reader.Read())
                 {
 
-                    MySqlCommand comandoBolsista = new MySqlCommand("INSERT INTO Bolsista(pessoa_id,endereco,bairro,rg,telefone,curso,matricula,instituicaodeensino,semestre,datadenascimento,cep,manha,tarde,noite,radioifce,radiooutra,radioremunerado,radiovoluntario,obs,ativar)"+
-                        " VALUES(" + reader.GetString("id") + " , '" + entradaEndereço.Text + "','" + entradaBairro.Text + "','" + entradaRg.Text + "','" + entradaTelefone.Text + "','" + entradaCurso.Text + "','" + entradaMatriula.Text + "','" + entradaINstituiçao.Text + "'"+
-                        " ,'" + entradaSemestre.Text + "','" + entradaDataDeNascimento.Text + "','"+entradaCep.Text+"',"+m+","+t+","+n+","+ifce+","+outra+", "+remunerado+", "+voluntario+" , '"+entradaOBS.Text+"',"+ false + ")", conectar);
+                    MySqlCommand comandoBolsista = new MySqlCommand("INSERT INTO Bolsista(pessoa_id,endereco,bairro,rg,telefone,curso,matricula,instituicaodeensino,semestre,datadenascimento,cep,manha,tarde,noite,radioifce,radiooutra,radioremunerado,radiovoluntario,obs,ativar)" +
+                        " VALUES(" + reader.GetString("id") + " , '" + entradaEndereço.Text + "','" + entradaBairro.Text + "','" + entradaRg.Text + "','" + entradaTelefone.Text + "','" + entradaCurso.Text + "','" + entradaMatriula.Text + "','" + entradaINstituiçao.Text + "'" +
+                        " ,'" + entradaSemestre.Text + "','" + entradaDataDeNascimento.Text + "','" + entradaCep.Text + "'," + m + "," + t + "," + n + "," + ifce + "," + outra + ", " + remunerado + ", " + voluntario + " , '" + entradaOBS.Text + "'," + false + ")", conectar);
 
                     MySqlCommand comandoprofessor = new MySqlCommand("INSERT INTO professor(pessoa_id,projeto)VALUES(" + reader.GetString("id") + ", '" + entradaProjeto.Text + "')", conectar);
 
                     reader.Close();
                     comandoBolsista.ExecuteNonQuery();
                     comandoprofessor.ExecuteNonQuery();
-                    
+
                 }
 
                 reader = comandoselectremunerado.ExecuteReader();
 
-                if (reader.Read()) {
-                    MySqlCommand comandoremunerado = new MySqlCommand("INSERT INTO remunerado(bolsista_id,agencia,conta,orientador,fonte_bolsa,banco)VALUES (" + reader.GetString("id") + ", '"+entradaAgencia.Text+"', '"+entradaConta.Text+"', '"+entradaOrientador.Text+"','"+entradaFonteDaBolsa.Text+"', '"+entradaBanco.Text+"')", conectar);
+                if (reader.Read())
+                {
+                    MySqlCommand comandoremunerado = new MySqlCommand("INSERT INTO remunerado(bolsista_id,agencia,conta,orientador,fonte_bolsa,banco)VALUES (" + reader.GetString("id") + ", '" + entradaAgencia.Text + "', '" + entradaConta.Text + "', '" + entradaOrientador.Text + "','" + entradaFonteDaBolsa.Text + "', '" + entradaBanco.Text + "')", conectar);
                     reader.Close();
                     comandoremunerado.ExecuteNonQuery();
                     MessageBox.Show("Salvo com sucesso, que Topper!");
-                    
+
                     Form3 maisumform = new Form3(this, entradaCpf.Text);
                     maisumform.ShowDialog();
                     pictureBoxFoto.ImageLocation = @"Photos\" + entradaCpf.Text + ".jpg";
-                    
+
                 }
 
                 conectar.Close();
             }
 
-            
+
 
 
             catch (Exception error)
@@ -96,7 +97,7 @@ namespace metodosMySql
             pictureBoxFoto.ImageLocation = @"Photos\" + entradaCpf.Text + ".jpg";*/
             //pictureBoxFoto.Load("http://i2.kym-cdn.com/photos/images/facebook/000/862/065/0e9.jpg");
         }
- // ******************************************************* botao para buscar aluno ************************************************//
+        // ******************************************************* botao para buscar aluno ************************************************//
         private void button2_Click(object sender, EventArgs e)
         {
             buttonFoto.Enabled = true;
