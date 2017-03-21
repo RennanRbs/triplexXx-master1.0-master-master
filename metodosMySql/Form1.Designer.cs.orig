@@ -402,7 +402,7 @@
             this.radiooutra.Location = new System.Drawing.Point(137, 12);
             this.radiooutra.Name = "radiooutra";
             this.radiooutra.Size = new System.Drawing.Size(78, 26);
-            this.radiooutra.TabIndex = 1;
+            this.radiooutra.TabIndex = 67;
             this.radiooutra.TabStop = true;
             this.radiooutra.Text = "Outra";
             this.radiooutra.UseVisualStyleBackColor = true;
@@ -410,12 +410,11 @@
             // radioifce
             // 
             this.radioifce.AutoSize = true;
-            this.radioifce.Checked = true;
             this.radioifce.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.radioifce.Location = new System.Drawing.Point(20, 12);
             this.radioifce.Name = "radioifce";
             this.radioifce.Size = new System.Drawing.Size(72, 26);
-            this.radioifce.TabIndex = 0;
+            this.radioifce.TabIndex = 68;
             this.radioifce.TabStop = true;
             this.radioifce.Text = "IFCE";
             this.radioifce.UseVisualStyleBackColor = true;
@@ -500,6 +499,43 @@
             this.checkBox4.Text = "Remunerado";
             this.checkBox4.UseVisualStyleBackColor = true;
             // 
+<<<<<<< HEAD
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.radiovoluntario);
+            this.groupBox2.Controls.Add(this.radioremunerado);
+            this.groupBox2.Location = new System.Drawing.Point(94, 407);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(260, 48);
+            this.groupBox2.TabIndex = 17;
+            this.groupBox2.TabStop = false;
+            // 
+            // radiovoluntario
+            // 
+            this.radiovoluntario.AutoSize = true;
+            this.radiovoluntario.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.radiovoluntario.Location = new System.Drawing.Point(147, 14);
+            this.radiovoluntario.Name = "radiovoluntario";
+            this.radiovoluntario.Size = new System.Drawing.Size(112, 24);
+            this.radiovoluntario.TabIndex = 38;
+            this.radiovoluntario.TabStop = true;
+            this.radiovoluntario.Text = "Voluntario";
+            this.radiovoluntario.UseVisualStyleBackColor = true;
+            // 
+            // radioremunerado
+            // 
+            this.radioremunerado.AutoSize = true;
+            this.radioremunerado.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.radioremunerado.Location = new System.Drawing.Point(5, 12);
+            this.radioremunerado.Name = "radioremunerado";
+            this.radioremunerado.Size = new System.Drawing.Size(141, 26);
+            this.radioremunerado.TabIndex = 45;
+            this.radioremunerado.TabStop = true;
+            this.radioremunerado.Text = "Remunerado";
+            this.radioremunerado.UseVisualStyleBackColor = true;
+            // 
+=======
+>>>>>>> 3a38803... bugfix2 tabindex
             // manha
             // 
             this.manha.AutoSize = true;
@@ -507,7 +543,7 @@
             this.manha.Location = new System.Drawing.Point(7, 13);
             this.manha.Name = "manha";
             this.manha.Size = new System.Drawing.Size(42, 24);
-            this.manha.TabIndex = 0;
+            this.manha.TabIndex = 38;
             this.manha.Text = "M";
             this.manha.UseVisualStyleBackColor = true;
             // 
@@ -518,7 +554,7 @@
             this.tarde.Location = new System.Drawing.Point(74, 13);
             this.tarde.Name = "tarde";
             this.tarde.Size = new System.Drawing.Size(38, 24);
-            this.tarde.TabIndex = 1;
+            this.tarde.TabIndex = 45;
             this.tarde.Text = "T";
             this.tarde.UseVisualStyleBackColor = true;
             // 
@@ -529,7 +565,7 @@
             this.noite.Location = new System.Drawing.Point(141, 13);
             this.noite.Name = "noite";
             this.noite.Size = new System.Drawing.Size(40, 24);
-            this.noite.TabIndex = 2;
+            this.noite.TabIndex = 46;
             this.noite.Text = "N";
             this.noite.UseVisualStyleBackColor = true;
             // 
@@ -676,7 +712,7 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(9, 701);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(302, 20);
-            this.dateTimePicker1.TabIndex = 33;
+            this.dateTimePicker1.TabIndex = 32;
             // 
             // button3
             // 

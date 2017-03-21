@@ -245,6 +245,10 @@ namespace metodosMySql
                     }
                 }
                 entradaOBS.Text = "";
+                radioifce.Checked = true;
+                radiooutra.Checked = false;
+                radiovoluntario.Checked = true;
+                radioremunerado.Checked = false;
                 manha.Checked = false;
                 tarde.Checked = false;
                 noite.Checked = false;

@@ -49,3 +49,4 @@ Temporary Items
 metodosMySql/bin/*
 metodosMySql/obj/*
 .vs/
+metodosMySql/publish/*
