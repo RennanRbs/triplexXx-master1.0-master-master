@@ -25,7 +25,7 @@ namespace metodosMySql
    //***************************************************** salvar Bolsista *****************************************************************************//
         private void button1_Click(object sender, EventArgs e)
         {
-            buttonFoto.Enabled = true;
+            
             bool m = false, t = false, n = false, ifce = false, outra = false, remunerado = false, voluntario = false;
             if (manha.Checked) { m = true; }
             if (tarde.Checked) { t = true; }
@@ -104,6 +104,7 @@ namespace metodosMySql
                 conectar.Close();
                 MessageBox.Show("Salvo com sucesso, que Topper!");
 
+                buttonFoto.Enabled = true;
                 Form3 maisumform = new Form3(this, entradaCpf.Text);
                 maisumform.ShowDialog();
                 pictureBoxFoto.ImageLocation = @"Photos\" + entradaCpf.Text + ".jpg";
@@ -174,8 +175,10 @@ namespace metodosMySql
                         entradaTelefone.Text = reader.GetString("telefone");
                         entradaDataDeNascimento.Text = reader.GetString("datadenascimento");
                         entradaCurso.Text = reader.GetString("curso");
+                        entradaProjeto.Text = reader.GetString("projeto");
                         entradaAgencia.Text = reader.GetString("agencia");
                         entradaConta.Text = reader.GetString("conta");
+                        entradaOrientador.Text = reader.GetString("orientador");
                         entradaFonteDaBolsa.Text = reader.GetString("fonte_bolsa");
                         entradaBanco.Text = reader.GetString("banco");
                         entradaOBS.Text = reader.GetString("obs");
@@ -339,12 +342,16 @@ namespace metodosMySql
                 manha.Checked = false;
                 tarde.Checked = false;
                 noite.Checked = false;
+                radiooutra.Checked = false;
+                radioifce.Checked = false;
                 Ativar.Checked = false;
 
                 entradaProjeto.SelectedIndex = 0;
                 entradaOrientador.SelectedIndex = -1;
             }
             else if (dialogResult == DialogResult.No) { }
+            pictureBoxFoto.ImageLocation = @"metodosMySql\Resources\" + "blank_user" + ".jpg";
+            buttonFoto.Enabled = false;
         }
 
 

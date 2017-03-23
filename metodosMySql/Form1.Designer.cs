@@ -38,6 +38,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.entradaMatriula = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -72,7 +74,9 @@
             this.entradaCodigo = new System.Windows.Forms.GroupBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.entradaProjeto = new System.Windows.Forms.TextBox();
             this.entradaFonteDaBolsa = new System.Windows.Forms.TextBox();
+            this.entradaOrientador = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -86,6 +90,10 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.Ativar = new System.Windows.Forms.CheckBox();
+            this.buttonFoto = new System.Windows.Forms.Button();
+            this.pictureBoxFoto = new System.Windows.Forms.PictureBox();
+            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.label28 = new System.Windows.Forms.Label();
             this.entradaID = new System.Windows.Forms.TextBox();
             this.entradaCelular = new System.Windows.Forms.MaskedTextBox();
@@ -111,6 +119,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
+            this.groupBolsista.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -199,6 +208,28 @@
             this.label5.Size = new System.Drawing.Size(154, 20);
             this.label5.TabIndex = 9;
             this.label5.Text = "Data de Nascimento";
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.Menu;
+            this.button2.BackgroundImage = global::metodosMySql.Properties.Resources.search_148820_960_720;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Location = new System.Drawing.Point(444, 74);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(40, 38);
+            this.button2.TabIndex = 30;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::metodosMySql.Properties.Resources.lit;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(178, 141);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 67;
+            this.pictureBox1.TabStop = false;
             // 
             // label6
             // 
@@ -547,6 +578,14 @@
             this.label22.TabIndex = 49;
             this.label22.Text = "Fonte Da Bolsa";
             // 
+            // entradaProjeto
+            // 
+            this.entradaProjeto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.entradaProjeto.Location = new System.Drawing.Point(77, 461);
+            this.entradaProjeto.Name = "entradaProjeto";
+            this.entradaProjeto.Size = new System.Drawing.Size(639, 23);
+            this.entradaProjeto.TabIndex = 19;
+            // 
             // entradaFonteDaBolsa
             // 
             this.entradaFonteDaBolsa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -676,6 +715,54 @@
             this.Ativar.Text = "Desativar";
             this.Ativar.UseVisualStyleBackColor = true;
             this.Ativar.CheckedChanged += new System.EventHandler(this.Ativar_CheckedChanged);
+            // 
+            // buttonFoto
+            // 
+            this.buttonFoto.BackgroundImage = global::metodosMySql.Properties.Resources.photo_icon;
+            this.buttonFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonFoto.Enabled = false;
+            this.buttonFoto.Location = new System.Drawing.Point(542, 69);
+            this.buttonFoto.Name = "buttonFoto";
+            this.buttonFoto.Size = new System.Drawing.Size(40, 38);
+            this.buttonFoto.TabIndex = 32;
+            this.buttonFoto.UseVisualStyleBackColor = true;
+            this.buttonFoto.Click += new System.EventHandler(this.buttonFoto_Click);
+            // 
+            // pictureBoxFoto
+            // 
+            this.pictureBoxFoto.BackgroundImage = global::metodosMySql.Properties.Resources.blank_user;
+            this.pictureBoxFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxFoto.ErrorImage = global::metodosMySql.Properties.Resources.blank_user;
+            this.pictureBoxFoto.InitialImage = global::metodosMySql.Properties.Resources.blank_user;
+            this.pictureBoxFoto.Location = new System.Drawing.Point(594, 23);
+            this.pictureBoxFoto.Name = "pictureBoxFoto";
+            this.pictureBoxFoto.Size = new System.Drawing.Size(121, 114);
+            this.pictureBoxFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxFoto.TabIndex = 69;
+            this.pictureBoxFoto.TabStop = false;
+            this.pictureBoxFoto.Click += new System.EventHandler(this.pictureBoxFoto_Click);
+            // 
+            // pictureBoxLogo
+            // 
+            this.pictureBoxLogo.Location = new System.Drawing.Point(48, 12);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(199, 126);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxLogo.TabIndex = 12;
+            this.pictureBoxLogo.TabStop = false;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.SystemColors.Window;
+            this.button5.BackgroundImage = global::metodosMySql.Properties.Resources.search_148820_960_720;
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(486, 148);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(30, 28);
+            this.button5.TabIndex = 31;
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label28
             // 
@@ -911,7 +998,9 @@
             this.Controls.Add(this.label25);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.label23);
+            this.Controls.Add(this.entradaOrientador);
             this.Controls.Add(this.entradaFonteDaBolsa);
+            this.Controls.Add(this.entradaProjeto);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.entradaCodigo);
@@ -959,6 +1048,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cadastro";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.entradaCodigo.ResumeLayout(false);
@@ -968,6 +1058,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFoto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
+            this.groupBolsista.ResumeLayout(false);
+            this.groupBolsista.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1020,7 +1112,9 @@
         private System.Windows.Forms.GroupBox entradaCodigo;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox entradaProjeto;
         private System.Windows.Forms.TextBox entradaFonteDaBolsa;
+        private System.Windows.Forms.TextBox entradaOrientador;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
