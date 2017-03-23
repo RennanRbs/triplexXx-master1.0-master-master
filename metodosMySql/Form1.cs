@@ -25,7 +25,7 @@ namespace metodosMySql
    //***************************************************** salvar Bolsista *****************************************************************************//
         private void button1_Click(object sender, EventArgs e)
         {
-            buttonFoto.Enabled = true;
+            
             bool m = false, t = false, n = false, ifce = false, outra = false, remunerado = false, voluntario = false;
             if (manha.Checked) { m = true; }
             if (tarde.Checked) { t = true; }
@@ -78,6 +78,8 @@ namespace metodosMySql
                     maisumform.ShowDialog();
                     pictureBoxFoto.ImageLocation = @"Photos\" + entradaCpf.Text + ".jpg";
 
+                    buttonFoto.Enabled = true;
+
                 }
 
                 conectar.Close();
@@ -91,16 +93,13 @@ namespace metodosMySql
                 MessageBox.Show("error.." + error.Message + "   Contate o suporte");
                 conectar.Close();
             }
-            /*
-            Form3 maisumform = new Form3(this, entradaCpf.Text);
-            maisumform.ShowDialog();
-            pictureBoxFoto.ImageLocation = @"Photos\" + entradaCpf.Text + ".jpg";*/
+
             //pictureBoxFoto.Load("http://i2.kym-cdn.com/photos/images/facebook/000/862/065/0e9.jpg");
         }
         // ******************************************************* botao para buscar aluno ************************************************//
         private void button2_Click(object sender, EventArgs e)
         {
-            buttonFoto.Enabled = true;
+            
             if (entradaIDLit.Text != "")
             {
                 try
@@ -160,6 +159,8 @@ namespace metodosMySql
                         if (reader.GetBoolean("ativar")) { Ativar.Checked = true; }
 
                         pictureBoxFoto.ImageLocation = @"Photos\" + entradaCpf.Text + ".jpg";
+
+                        buttonFoto.Enabled = true;
 
 
                     }
