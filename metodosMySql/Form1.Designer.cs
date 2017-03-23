@@ -73,9 +73,7 @@
             this.entradaCodigo = new System.Windows.Forms.GroupBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.entradaProjeto = new System.Windows.Forms.TextBox();
             this.entradaFonteDaBolsa = new System.Windows.Forms.TextBox();
-            this.entradaOrientador = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -102,8 +100,10 @@
             this.entradaDataDeNascimento = new System.Windows.Forms.MaskedTextBox();
             this.entradaSemestre = new System.Windows.Forms.TextBox();
             this.groupBolsista = new System.Windows.Forms.GroupBox();
-            this.radiovoluntario = new System.Windows.Forms.RadioButton();
             this.radioremunerado = new System.Windows.Forms.RadioButton();
+            this.radiovoluntario = new System.Windows.Forms.RadioButton();
+            this.entradaProjeto = new System.Windows.Forms.ComboBox();
+            this.entradaOrientador = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.entradaCodigo.SuspendLayout();
@@ -548,7 +548,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(429, 493);
+            this.label21.Location = new System.Drawing.Point(307, 461);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(94, 20);
             this.label21.TabIndex = 48;
@@ -564,14 +564,6 @@
             this.label22.TabIndex = 49;
             this.label22.Text = "Fonte Da Bolsa";
             // 
-            // entradaProjeto
-            // 
-            this.entradaProjeto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.entradaProjeto.Location = new System.Drawing.Point(77, 461);
-            this.entradaProjeto.Name = "entradaProjeto";
-            this.entradaProjeto.Size = new System.Drawing.Size(639, 23);
-            this.entradaProjeto.TabIndex = 19;
-            // 
             // entradaFonteDaBolsa
             // 
             this.entradaFonteDaBolsa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -579,14 +571,6 @@
             this.entradaFonteDaBolsa.Name = "entradaFonteDaBolsa";
             this.entradaFonteDaBolsa.Size = new System.Drawing.Size(278, 23);
             this.entradaFonteDaBolsa.TabIndex = 20;
-            // 
-            // entradaOrientador
-            // 
-            this.entradaOrientador.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.entradaOrientador.Location = new System.Drawing.Point(529, 490);
-            this.entradaOrientador.Name = "entradaOrientador";
-            this.entradaOrientador.Size = new System.Drawing.Size(187, 23);
-            this.entradaOrientador.TabIndex = 21;
             // 
             // label23
             // 
@@ -845,6 +829,17 @@
             this.groupBolsista.TabIndex = 17;
             this.groupBolsista.TabStop = false;
             // 
+            // radioremunerado
+            // 
+            this.radioremunerado.AutoSize = true;
+            this.radioremunerado.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.radioremunerado.Location = new System.Drawing.Point(121, 12);
+            this.radioremunerado.Name = "radioremunerado";
+            this.radioremunerado.Size = new System.Drawing.Size(132, 24);
+            this.radioremunerado.TabIndex = 1;
+            this.radioremunerado.Text = "Remunerado";
+            this.radioremunerado.UseVisualStyleBackColor = true;
+            // 
             // radiovoluntario
             // 
             this.radiovoluntario.AutoSize = true;
@@ -858,16 +853,22 @@
             this.radiovoluntario.Text = "Voluntário";
             this.radiovoluntario.UseVisualStyleBackColor = true;
             // 
-            // radioremunerado
+            // entradaProjeto
             // 
-            this.radioremunerado.AutoSize = true;
-            this.radioremunerado.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.radioremunerado.Location = new System.Drawing.Point(121, 12);
-            this.radioremunerado.Name = "radioremunerado";
-            this.radioremunerado.Size = new System.Drawing.Size(132, 24);
-            this.radioremunerado.TabIndex = 1;
-            this.radioremunerado.Text = "Remunerado";
-            this.radioremunerado.UseVisualStyleBackColor = true;
+            this.entradaProjeto.FormattingEnabled = true;
+            this.entradaProjeto.Location = new System.Drawing.Point(77, 463);
+            this.entradaProjeto.Name = "entradaProjeto";
+            this.entradaProjeto.Size = new System.Drawing.Size(189, 21);
+            this.entradaProjeto.TabIndex = 70;
+            this.entradaProjeto.SelectedIndexChanged += new System.EventHandler(this.entradaProjeto_SelectedIndexChanged);
+            // 
+            // entradaOrientador
+            // 
+            this.entradaOrientador.FormattingEnabled = true;
+            this.entradaOrientador.Location = new System.Drawing.Point(434, 463);
+            this.entradaOrientador.Name = "entradaOrientador";
+            this.entradaOrientador.Size = new System.Drawing.Size(157, 21);
+            this.entradaOrientador.TabIndex = 71;
             // 
             // Form1
             // 
@@ -877,6 +878,8 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(737, 733);
+            this.Controls.Add(this.entradaOrientador);
+            this.Controls.Add(this.entradaProjeto);
             this.Controls.Add(this.groupBolsista);
             this.Controls.Add(this.entradaSemestre);
             this.Controls.Add(this.entradaDataDeNascimento);
@@ -901,9 +904,7 @@
             this.Controls.Add(this.label25);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.label23);
-            this.Controls.Add(this.entradaOrientador);
             this.Controls.Add(this.entradaFonteDaBolsa);
-            this.Controls.Add(this.entradaProjeto);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.entradaCodigo);
@@ -1011,9 +1012,7 @@
         private System.Windows.Forms.GroupBox entradaCodigo;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox entradaProjeto;
         private System.Windows.Forms.TextBox entradaFonteDaBolsa;
-        private System.Windows.Forms.TextBox entradaOrientador;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
@@ -1042,6 +1041,8 @@
         private System.Windows.Forms.GroupBox groupBolsista;
         private System.Windows.Forms.RadioButton radioremunerado;
         private System.Windows.Forms.RadioButton radiovoluntario;
+        private System.Windows.Forms.ComboBox entradaProjeto;
+        private System.Windows.Forms.ComboBox entradaOrientador;
     }
 }
 
