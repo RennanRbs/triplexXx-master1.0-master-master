@@ -175,10 +175,8 @@ namespace metodosMySql
                         entradaTelefone.Text = reader.GetString("telefone");
                         entradaDataDeNascimento.Text = reader.GetString("datadenascimento");
                         entradaCurso.Text = reader.GetString("curso");
-                        entradaProjeto.Text = reader.GetString("projeto");
                         entradaAgencia.Text = reader.GetString("agencia");
                         entradaConta.Text = reader.GetString("conta");
-                        entradaOrientador.Text = reader.GetString("orientador");
                         entradaFonteDaBolsa.Text = reader.GetString("fonte_bolsa");
                         entradaBanco.Text = reader.GetString("banco");
                         entradaOBS.Text = reader.GetString("obs");

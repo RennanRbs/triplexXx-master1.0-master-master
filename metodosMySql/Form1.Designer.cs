@@ -74,9 +74,7 @@
             this.entradaCodigo = new System.Windows.Forms.GroupBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.entradaProjeto = new System.Windows.Forms.TextBox();
             this.entradaFonteDaBolsa = new System.Windows.Forms.TextBox();
-            this.entradaOrientador = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -1112,9 +1110,7 @@
         private System.Windows.Forms.GroupBox entradaCodigo;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox entradaProjeto;
         private System.Windows.Forms.TextBox entradaFonteDaBolsa;
-        private System.Windows.Forms.TextBox entradaOrientador;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
