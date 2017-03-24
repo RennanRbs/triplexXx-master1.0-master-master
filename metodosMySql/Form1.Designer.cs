@@ -105,12 +105,6 @@
             this.radiovoluntario = new System.Windows.Forms.RadioButton();
             this.entradaProjeto = new System.Windows.Forms.ComboBox();
             this.entradaOrientador = new System.Windows.Forms.ComboBox();
-            this.buttonFoto = new System.Windows.Forms.Button();
-            this.pictureBoxFoto = new System.Windows.Forms.PictureBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.entradaCodigo.SuspendLayout();
             this.groupBolsista.SuspendLayout();
@@ -206,18 +200,6 @@
             this.label5.Size = new System.Drawing.Size(154, 20);
             this.label5.TabIndex = 9;
             this.label5.Text = "Data de Nascimento";
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.Menu;
-            this.button2.BackgroundImage = global::metodosMySql.Properties.Resources.search_148820_960_720;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(444, 74);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(40, 38);
-            this.button2.TabIndex = 30;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // pictureBox1
             // 
@@ -749,19 +731,6 @@
             this.pictureBoxLogo.TabIndex = 12;
             this.pictureBoxLogo.TabStop = false;
             // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.SystemColors.Window;
-            this.button5.BackgroundImage = global::metodosMySql.Properties.Resources.search_148820_960_720;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(486, 148);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(30, 28);
-            this.button5.TabIndex = 31;
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // label28
             // 
             this.label28.AutoSize = true;
@@ -892,32 +861,6 @@
             this.entradaOrientador.Size = new System.Drawing.Size(257, 24);
             this.entradaOrientador.TabIndex = 20;
             // 
-            // buttonFoto
-            // 
-            this.buttonFoto.BackgroundImage = global::metodosMySql.Properties.Resources.photo_icon;
-            this.buttonFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonFoto.Enabled = false;
-            this.buttonFoto.Location = new System.Drawing.Point(542, 69);
-            this.buttonFoto.Name = "buttonFoto";
-            this.buttonFoto.Size = new System.Drawing.Size(40, 38);
-            this.buttonFoto.TabIndex = 32;
-            this.buttonFoto.UseVisualStyleBackColor = true;
-            this.buttonFoto.Click += new System.EventHandler(this.buttonFoto_Click);
-            // 
-            // pictureBoxFoto
-            // 
-            this.pictureBoxFoto.BackgroundImage = global::metodosMySql.Properties.Resources.blank_user;
-            this.pictureBoxFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBoxFoto.ErrorImage = global::metodosMySql.Properties.Resources.blank_user;
-            this.pictureBoxFoto.InitialImage = global::metodosMySql.Properties.Resources.blank_user;
-            this.pictureBoxFoto.Location = new System.Drawing.Point(594, 23);
-            this.pictureBoxFoto.Name = "pictureBoxFoto";
-            this.pictureBoxFoto.Size = new System.Drawing.Size(121, 114);
-            this.pictureBoxFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxFoto.TabIndex = 69;
-            this.pictureBoxFoto.TabStop = false;
-            this.pictureBoxFoto.Click += new System.EventHandler(this.pictureBoxFoto_Click);
-            // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.SystemColors.Window;
@@ -952,15 +895,6 @@
             this.button2.TabIndex = 30;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // pictureBoxLogo
-            // 
-            this.pictureBoxLogo.Location = new System.Drawing.Point(48, 12);
-            this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(199, 126);
-            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxLogo.TabIndex = 12;
-            this.pictureBoxLogo.TabStop = false;
             // 
             // Form1
             // 

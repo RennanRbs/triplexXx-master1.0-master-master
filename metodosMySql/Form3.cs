@@ -35,7 +35,7 @@ namespace metodosMySql
             {
                 comboBox1.Items.Add(VideoCaptureDevice.Name);
             }
-            //this.comboBox1.SelectedIndex = 0;
+
             this.camera = new VideoCaptureDevice(webcam[0].MonikerString);
             this.camera.NewFrame += new NewFrameEventHandler(camera_NewFrame);
             this.camera.Start();
@@ -52,13 +52,7 @@ namespace metodosMySql
             if (this.camera.IsRunning)
             {
                 camera.Stop();
-                //saveFileDialog1.InitialDirectory = @"C:\Users\messyo\Desktop\github\triplexXx-master1.0-master\metodosMySql\Photos";
-                /*
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    
-                }*/
-                //saveFileDialog1.FileName = this.CPF;
+
                 if (this.CPF != "")
                 {
                     try
