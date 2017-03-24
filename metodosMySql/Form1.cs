@@ -137,7 +137,7 @@ namespace metodosMySql
                 try
                 {
 
-                    MySqlCommand comando, comando2;
+                    MySqlCommand comando;
                     MySqlDataReader reader;
                     conectar.Open();
 
@@ -426,6 +426,36 @@ namespace metodosMySql
         private void entradaProjeto_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void radioifce_CheckedChanged(object sender, EventArgs e)
+        {
+            if(radioifce.Checked == true)
+            {
+                entradaINstituiçao.Enabled = false;
+            }
+            else
+            {
+                entradaINstituiçao.Enabled = true;
+            }
+        }
+
+        private void entradaIDLit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                button2.PerformClick();
+                e.Handled = true;
+            }
+        }
+
+        private void entradaNome_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                button5.PerformClick();
+                e.Handled = true;
+            }
         }
     }
 }
