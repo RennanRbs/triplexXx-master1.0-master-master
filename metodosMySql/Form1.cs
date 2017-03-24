@@ -25,110 +25,168 @@ namespace metodosMySql
    //***************************************************** salvar Bolsista *****************************************************************************//
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            bool m = false, t = false, n = false, ifce = false, outra = false, remunerado = false, voluntario = false;
-            if (manha.Checked) { m = true; }
-            if (tarde.Checked) { t = true; }
-            if (noite.Checked) { n = true; }
-            if (radioifce.Checked) { ifce = true; }
-            if (radiooutra.Checked) { outra = true; }
-            if (radiovoluntario.Checked) { voluntario = true; }
-            if (radioremunerado.Checked) { remunerado = true; }
+            MySqlCommand buscacpf = new MySqlCommand("select cpf from pessoa where cpf =" + entradaCpf.Text + ";", conectar);
+            conectar.Open();
             try
+            { 
+            if ((string) buscacpf.ExecuteScalar() != entradaCpf.Text)
             {
-                
-                MySqlDataReader rdr2;
-                string buscaidprof = "select professor.id from professor,pessoa where pessoa.id = professor.pessoa_id and pessoa.nome = '" + entradaOrientador.Text + "';";
-                conectar.Open();
-                MySqlCommand comando2 = new MySqlCommand(buscaidprof, conectar);
-                rdr2 = comando2.ExecuteReader();
-                string idprof = "";
-                if (rdr2.Read())
-                {
-                    idprof = rdr2.GetString("id");
-                }
                 conectar.Close();
-                MySqlDataReader reader;
-                MySqlDataReader reader2;
-                conectar.Open();
-
-
-                MySqlCommand comandoPessoa = new MySqlCommand("INSERT INTO Pessoa(nome,email,cpf,celular,cod_digital) VALUES('" + entradaNome.Text + "','" + entradaEmail.Text + "','" + entradaCpf.Text + "','" + entradaCelular.Text + "', '" + entradaID.Text + "' )", conectar);
-                MySqlCommand comandoselect = new MySqlCommand(" select id from pessoa order by id DESC limit 1", conectar);
-                //MySqlCommand comandoselectprofessor = new MySqlCommand("SELECT id FROM bolsista order by id desc limit 1", conectar); -> comando inutil
-                MySqlCommand comandoselectremunerado = new MySqlCommand("SELECT id FROM bolsista order by id desc limit 1", conectar);
-                MySqlCommand comandoinsertbol_proj = new MySqlCommand("select id from projetos where nome= '" + entradaProjeto.Text + "'", conectar);
-                comandoPessoa.ExecuteNonQuery();
-
-                reader = comandoselect.ExecuteReader();
-
-                if (reader.Read())
+            
+                bool m = false, t = false, n = false, ifce = false, outra = false, remunerado = false, voluntario = false;
+                if (manha.Checked) { m = true; }
+                if (tarde.Checked) { t = true; }
+                if (noite.Checked) { n = true; }
+                if (radioifce.Checked) { ifce = true; }
+                if (radiooutra.Checked) { outra = true; }
+                if (radiovoluntario.Checked) { voluntario = true; }
+                if (radioremunerado.Checked) { remunerado = true; }
+                try
                 {
+                
+                    MySqlDataReader rdr2;
+                    string buscaidprof = "select professor.id from professor,pessoa where pessoa.id = professor.pessoa_id and pessoa.nome = '" + entradaOrientador.Text + "';";
+                    conectar.Open();
+                    MySqlCommand comando2 = new MySqlCommand(buscaidprof, conectar);
+                    rdr2 = comando2.ExecuteReader();
+                    string idprof = "";
+                    if (rdr2.Read())
+                    {
+                        idprof = rdr2.GetString("id");
+                    }
+                    conectar.Close();
+                    MySqlDataReader reader;
+                    MySqlDataReader reader2;
+                    conectar.Open();
+
+
+                    MySqlCommand comandoPessoa = new MySqlCommand("INSERT INTO Pessoa(nome,email,cpf,celular,cod_digital) VALUES('" + entradaNome.Text + "','" + entradaEmail.Text + "','" + entradaCpf.Text + "','" + entradaCelular.Text + "', '" + entradaID.Text + "' )", conectar);
+                    MySqlCommand comandoselect = new MySqlCommand(" select id from pessoa order by id DESC limit 1", conectar);
+                    //MySqlCommand comandoselectprofessor = new MySqlCommand("SELECT id FROM bolsista order by id desc limit 1", conectar); -> comando inutil
+                    MySqlCommand comandoselectremunerado = new MySqlCommand("SELECT id FROM bolsista order by id desc limit 1", conectar);
+                    MySqlCommand comandoinsertbol_proj = new MySqlCommand("select id from projetos where nome= '" + entradaProjeto.Text + "'", conectar);
+                    comandoPessoa.ExecuteNonQuery();
+
+                    reader = comandoselect.ExecuteReader();
+
+                    if (reader.Read())
+                    {
                     
-                    MySqlCommand comandoBolsista = new MySqlCommand("INSERT INTO Bolsista(pessoa_id,endereco,bairro,rg,telefone,curso,matricula,instituicaodeensino,semestre,datadenascimento,cep,manha,tarde,noite,radioifce,radiooutra,radioremunerado,radiovoluntario,obs,ativar, orientador_id)" +
-                        " VALUES(" + reader.GetString("id") + " , '" + entradaEndereço.Text + "','" + entradaBairro.Text + "','" + entradaRg.Text + "','" + entradaTelefone.Text + "','" + entradaCurso.Text + "','" + entradaMatriula.Text + "','" + entradaINstituiçao.Text + "'" +
-                        " ,'" + entradaSemestre.Text + "','" + entradaDataDeNascimento.Text + "','" + entradaCep.Text + "'," + m + "," + t + "," + n + "," + ifce + "," + outra + ", " + remunerado + ", " + voluntario + " , '" + entradaOBS.Text + "'," + Ativar.Checked + ","+ idprof +");", conectar);
+                        MySqlCommand comandoBolsista = new MySqlCommand("INSERT INTO Bolsista(pessoa_id,endereco,bairro,rg,telefone,curso,matricula,instituicaodeensino,semestre,datadenascimento,cep,manha,tarde,noite,radioifce,radiooutra,radioremunerado,radiovoluntario,obs,ativar, orientador_id)" +
+                            " VALUES(" + reader.GetString("id") + " , '" + entradaEndereço.Text + "','" + entradaBairro.Text + "','" + entradaRg.Text + "','" + entradaTelefone.Text + "','" + entradaCurso.Text + "','" + entradaMatriula.Text + "','" + entradaINstituiçao.Text + "'" +
+                            " ,'" + entradaSemestre.Text + "','" + entradaDataDeNascimento.Text + "','" + entradaCep.Text + "'," + m + "," + t + "," + n + "," + ifce + "," + outra + ", " + remunerado + ", " + voluntario + " , '" + entradaOBS.Text + "'," + Ativar.Checked + ","+ idprof +");", conectar);
 
                     
 
+                        reader.Close();
+                        comandoBolsista.ExecuteNonQuery();
+                    
+
+                    }
+
+                    reader = comandoselectremunerado.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                    
+                        MySqlCommand comandoremunerado = new MySqlCommand("INSERT INTO remunerado(bolsista_id,agencia,conta,fonte_bolsa,banco)VALUES (" + reader.GetString("id") + ", '" + entradaAgencia.Text + "', '" + entradaConta.Text + "', '" + entradaFonteDaBolsa.Text + "', '" + entradaBanco.Text + "')", conectar);
+                        reader.Close();
+                        comandoremunerado.ExecuteNonQuery();
+                    
+                    }
+                    reader = comandoselectremunerado.ExecuteReader();
+                    reader.Read();
+                    string id_bol = reader.GetString("id");
                     reader.Close();
-                    comandoBolsista.ExecuteNonQuery();
-                    
-
-                }
-
-                reader = comandoselectremunerado.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    
-                    MySqlCommand comandoremunerado = new MySqlCommand("INSERT INTO remunerado(bolsista_id,agencia,conta,fonte_bolsa,banco)VALUES (" + reader.GetString("id") + ", '" + entradaAgencia.Text + "', '" + entradaConta.Text + "', '" + entradaFonteDaBolsa.Text + "', '" + entradaBanco.Text + "')", conectar);
-                    reader.Close();
-                    comandoremunerado.ExecuteNonQuery();
-                    
-                }
-                reader = comandoselectremunerado.ExecuteReader();
-                reader.Read();
-                string id_bol = reader.GetString("id");
-                reader.Close();
                
-                reader2 = comandoinsertbol_proj.ExecuteReader();
-                reader2.Read();
-                string id_proj = reader2.GetString("id");
-                reader2.Close();
+                    reader2 = comandoinsertbol_proj.ExecuteReader();
+                    reader2.Read();
+                    string id_proj = reader2.GetString("id");
+                    reader2.Close();
                 
-                MySqlCommand insertbol_proj = new MySqlCommand("insert into bolsista_projeto values(default," + id_bol + "," + id_proj + ");", conectar);
-                insertbol_proj.ExecuteNonQuery();
+                    MySqlCommand insertbol_proj = new MySqlCommand("insert into bolsista_projeto values(default," + id_bol + "," + id_proj + ");", conectar);
+                    insertbol_proj.ExecuteNonQuery();
                     
                     
-                conectar.Close();
-                MessageBox.Show("Salvo com sucesso, que Topper!");
+                    conectar.Close();
+                    MessageBox.Show("Salvo com sucesso, que Topper!");
 
-                buttonFoto.Enabled = true;
-                Form3 maisumform = new Form3(this, entradaCpf.Text);
-                maisumform.ShowDialog();
-                pictureBoxFoto.ImageLocation = @"Photos\" + entradaCpf.Text + ".jpg";
+                    buttonFoto.Enabled = true;
+                    Form3 maisumform = new Form3(this, entradaCpf.Text);
+                    maisumform.ShowDialog();
+                    pictureBoxFoto.ImageLocation = @"Photos\" + entradaCpf.Text + ".jpg";
                 
 
                 
 
                 
-            }
+                }
 
 
 
 
-            catch (Exception error)
+                catch (Exception error)
+                {
+                    MessageBox.Show("error.." + error.Message + "   Contate o suporte");
+                    conectar.Close();
+                }
+                    //pictureBoxFoto.Load("http://i2.kym-cdn.com/photos/images/facebook/000/862/065/0e9.jpg");
+                }
+            else
             {
-                MessageBox.Show("error.." + error.Message + "   Contate o suporte");
-                conectar.Close();
+                try
+                {
+                    conectar.Close();
+                    MySqlDataReader rdr;
+                    string buscaidproj = "select id from projetos where nome = '" + entradaProjeto.Text + "';";
+                    conectar.Open();
+                    MySqlCommand comando = new MySqlCommand(buscaidproj, conectar);
+                    rdr = comando.ExecuteReader();
+                    string idproj = "";
+                    if (rdr.Read())
+                    {
+                        idproj = rdr.GetString("id");
+                    }
+                    conectar.Close();
+                    MySqlDataReader rdr2;
+                    string buscaidprof = "select professor.id from professor,pessoa where pessoa.id = professor.pessoa_id and pessoa.nome = '" + entradaOrientador.Text + "';";
+                    conectar.Open();
+                    MySqlCommand comando2 = new MySqlCommand(buscaidprof, conectar);
+                    rdr2 = comando2.ExecuteReader();
+                    string idprof = "";
+                    if (rdr2.Read())
+                    {
+                        idprof = rdr2.GetString("id");
+                    }
+                    conectar.Close();
+                    string UpdatePessoa = "UPDATE pessoa,bolsista,remunerado,bolsista_projeto SET cod_digital = '" + entradaID.Text + "',obs = '" + entradaOBS.Text + "',fonte_bolsa = '" + entradaFonteDaBolsa.Text + "',orientador_id = '" + idprof + "',banco = '" + entradaBanco.Text + "'," +
+                        "conta = '" + entradaConta.Text + "',agencia = '" + entradaAgencia.Text + "',rg = '" + entradaRg.Text + "',radioremunerado = " + radioremunerado.Checked + ",radiovoluntario = " + radiovoluntario.Checked + "," +
+                        "ativar = " + Ativar.Checked + ",radiooutra = " + radiooutra.Checked + ",radioifce = " + radioifce.Checked + ",manha = " + manha.Checked + ",tarde =" + tarde.Checked + ",noite = " + noite.Checked + "  ,email = '" + entradaEmail.Text + "', cep= '" + entradaCep.Text + "' ,cpf = '" + entradaCpf.Text + "',bairro = '" + entradaBairro.Text + "',datadenascimento = '" + entradaDataDeNascimento.Text + "', telefone = '" + entradaTelefone.Text + "',instituicaodeensino = '" + entradaINstituiçao.Text + "',matricula = '" + entradaMatriula.Text + "',semestre = '" + entradaSemestre.Text + "', celular = '" + entradaCelular.Text + "',curso = '" + entradaCurso.Text + "',  nome= '" + entradaNome.Text + "', endereco = '" + entradaEndereço.Text + "'" +
+                        ",projeto_id = '" + idproj +
+                        "' where bolsista_projeto.bolsista_id = bolsista.id and bolsista.pessoa_id =  pessoa.id and bolsista.id = remunerado.bolsista_id and pessoa.id ='" + entradaIDLit.Text + "';";
+
+                    conectar.Open();
+                    MySqlCommand comando3 = new MySqlCommand(UpdatePessoa, conectar);
+
+                    if (comando3.ExecuteNonQuery() == 4) { MessageBox.Show("dados atualizados"); } else { MessageBox.Show("nao atualizado"); }
+                    conectar.Close();
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show("error.." + error.Message);
+                    conectar.Close();
+                }
             }
-            /*
-            Form3 maisumform = new Form3(this, entradaCpf.Text);
-            maisumform.ShowDialog();
-            pictureBoxFoto.ImageLocation = @"Photos\" + entradaCpf.Text + ".jpg";*/
-            //pictureBoxFoto.Load("http://i2.kym-cdn.com/photos/images/facebook/000/862/065/0e9.jpg");
+
         }
+            catch
+            {
+                MessageBox.Show("Sem CPF, Sem busca!!");
+
+            }
+        }
+       
+
         // ******************************************************* botao para buscar aluno ************************************************//
         private void button2_Click(object sender, EventArgs e)
         {
@@ -255,61 +313,7 @@ namespace metodosMySql
 
            
         }
-    //****************************botao para dar update no aluno ********************************************//
-        private void button3_Click_1(object sender, EventArgs e)
-
-        {         
-                try
-            {
-                MySqlDataReader rdr;
-                string buscaidproj = "select id from projetos where nome = '"+entradaProjeto.Text+"';";
-                conectar.Open();
-                MySqlCommand comando = new MySqlCommand(buscaidproj, conectar);
-                rdr = comando.ExecuteReader();
-                string idproj = "";
-                if (rdr.Read())
-                {
-                    idproj = rdr.GetString("id");
-                }
-                conectar.Close();
-                MySqlDataReader rdr2;
-                string buscaidprof = "select professor.id from professor,pessoa where pessoa.id = professor.pessoa_id and pessoa.nome = '" + entradaOrientador.Text + "';";
-                conectar.Open();
-                MySqlCommand comando2 = new MySqlCommand(buscaidprof, conectar);
-                rdr2 = comando2.ExecuteReader();
-                string idprof = "";
-                if (rdr2.Read())
-                {
-                    idprof = rdr2.GetString("id");
-                }
-                conectar.Close();
-                string UpdatePessoa = "UPDATE pessoa,bolsista,remunerado,bolsista_projeto SET cod_digital = '" + entradaID.Text + "',obs = '"+entradaOBS.Text+"',fonte_bolsa = '"+entradaFonteDaBolsa.Text+"',orientador_id = '"+ idprof+"',banco = '"+entradaBanco.Text+"',"+
-                    "conta = '"+entradaConta.Text+"',agencia = '"+entradaAgencia.Text+"',rg = '"+entradaRg.Text+"',radioremunerado = "+radioremunerado.Checked+",radiovoluntario = "+radiovoluntario.Checked+","+
-                    "ativar = "+Ativar.Checked+",radiooutra = "+radiooutra.Checked+",radioifce = "+ radioifce.Checked+",manha = "+manha.Checked+",tarde ="+tarde.Checked+",noite = "+noite.Checked+"  ,email = '"+entradaEmail.Text+"', cep= '"+entradaCep.Text+"' ,cpf = '"+entradaCpf.Text+"',bairro = '"+entradaBairro.Text+"',datadenascimento = '"+entradaDataDeNascimento.Text+"', telefone = '"+entradaTelefone.Text+"',instituicaodeensino = '"+entradaINstituiçao.Text+"',matricula = '"+entradaMatriula.Text+"',semestre = '"+entradaSemestre.Text+"', celular = '"+entradaCelular.Text+ "',curso = '"+entradaCurso.Text+"',  nome= '" + entradaNome.Text + "', endereco = '"+ entradaEndereço.Text+ "'" +
-                    ",projeto_id = '"+ idproj +
-                    "' where bolsista_projeto.bolsista_id = bolsista.id and bolsista.pessoa_id =  pessoa.id and bolsista.id = remunerado.bolsista_id and pessoa.id ='" +entradaIDLit.Text +"';";
-                
-                conectar.Open();
-                 MySqlCommand comando3 = new MySqlCommand(UpdatePessoa,conectar);
-                
-                 if ( comando3.ExecuteNonQuery()== 4) { MessageBox.Show("dados atualizados"); } else { MessageBox.Show("nao atualizado"); }
-                 conectar.Close();
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show("error.." + error.Message);
-                conectar.Close();
-            }
-        }
-
-
-
-
-
-
-
-
-
+   
 
  //*************************************************************limpar a tabela **********************************************//
         private void button4_Click(object sender, EventArgs e)
@@ -340,8 +344,6 @@ namespace metodosMySql
                 manha.Checked = false;
                 tarde.Checked = false;
                 noite.Checked = false;
-                radiooutra.Checked = false;
-                radioifce.Checked = false;
                 Ativar.Checked = false;
 
                 entradaProjeto.SelectedIndex = 0;

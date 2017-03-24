@@ -85,7 +85,6 @@
             this.label27 = new System.Windows.Forms.Label();
             this.entradaOBS = new System.Windows.Forms.RichTextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.Ativar = new System.Windows.Forms.CheckBox();
             this.buttonFoto = new System.Windows.Forms.Button();
@@ -105,20 +104,20 @@
             this.radiovoluntario = new System.Windows.Forms.RadioButton();
             this.entradaProjeto = new System.Windows.Forms.ComboBox();
             this.entradaOrientador = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.entradaCodigo.SuspendLayout();
-            this.groupBolsista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFoto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.groupBolsista.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(489, 688);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(489, 654);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(227, 33);
+            this.button1.Size = new System.Drawing.Size(227, 67);
             this.button1.TabIndex = 27;
             this.button1.Text = "Salvar";
             this.button1.UseVisualStyleBackColor = true;
@@ -201,6 +200,18 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Data de Nascimento";
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.Menu;
+            this.button2.BackgroundImage = global::metodosMySql.Properties.Resources.search_148820_960_720;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Location = new System.Drawing.Point(363, 74);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(40, 38);
+            this.button2.TabIndex = 30;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::metodosMySql.Properties.Resources.lit;
@@ -243,7 +254,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(216, 83);
+            this.label8.Location = new System.Drawing.Point(229, 86);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(27, 20);
             this.label8.TabIndex = 16;
@@ -255,9 +266,9 @@
             this.entradaIDLit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.entradaIDLit.Font = new System.Drawing.Font("Microsoft Tai Le", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.entradaIDLit.ForeColor = System.Drawing.Color.White;
-            this.entradaIDLit.Location = new System.Drawing.Point(249, 83);
+            this.entradaIDLit.Location = new System.Drawing.Point(266, 83);
             this.entradaIDLit.Name = "entradaIDLit";
-            this.entradaIDLit.Size = new System.Drawing.Size(189, 24);
+            this.entradaIDLit.Size = new System.Drawing.Size(76, 24);
             this.entradaIDLit.TabIndex = 0;
             this.entradaIDLit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.entradaIDLit_KeyPress);
             // 
@@ -558,14 +569,6 @@
             this.label22.TabIndex = 49;
             this.label22.Text = "Fonte Da Bolsa";
             // 
-            // entradaProjeto
-            // 
-            this.entradaProjeto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.entradaProjeto.Location = new System.Drawing.Point(77, 461);
-            this.entradaProjeto.Name = "entradaProjeto";
-            this.entradaProjeto.Size = new System.Drawing.Size(639, 23);
-            this.entradaProjeto.TabIndex = 19;
-            // 
             // entradaFonteDaBolsa
             // 
             this.entradaFonteDaBolsa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -664,16 +667,6 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(302, 20);
             this.dateTimePicker1.TabIndex = 33;
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(489, 646);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(227, 33);
-            this.button3.TabIndex = 26;
-            this.button3.Text = "Atualizar";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
-            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(619, 609);
@@ -731,6 +724,19 @@
             this.pictureBoxLogo.TabIndex = 12;
             this.pictureBoxLogo.TabStop = false;
             // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.SystemColors.Window;
+            this.button5.BackgroundImage = global::metodosMySql.Properties.Resources.search_148820_960_720;
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(486, 148);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(30, 28);
+            this.button5.TabIndex = 31;
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // label28
             // 
             this.label28.AutoSize = true;
@@ -772,10 +778,10 @@
             // entradaCep
             // 
             this.entradaCep.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.entradaCep.Location = new System.Drawing.Point(636, 210);
+            this.entradaCep.Location = new System.Drawing.Point(635, 210);
             this.entradaCep.Mask = "00.000-000";
             this.entradaCep.Name = "entradaCep";
-            this.entradaCep.Size = new System.Drawing.Size(80, 23);
+            this.entradaCep.Size = new System.Drawing.Size(81, 23);
             this.entradaCep.TabIndex = 6;
             this.entradaCep.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
@@ -861,41 +867,6 @@
             this.entradaOrientador.Size = new System.Drawing.Size(257, 24);
             this.entradaOrientador.TabIndex = 20;
             // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.SystemColors.Window;
-            this.button5.BackgroundImage = global::metodosMySql.Properties.Resources.search_148820_960_720;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(486, 148);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(30, 28);
-            this.button5.TabIndex = 31;
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::metodosMySql.Properties.Resources.lit;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(178, 141);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 67;
-            this.pictureBox1.TabStop = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.Menu;
-            this.button2.BackgroundImage = global::metodosMySql.Properties.Resources.search_148820_960_720;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(444, 74);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(40, 38);
-            this.button2.TabIndex = 30;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -904,8 +875,6 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(737, 733);
-            this.Controls.Add(this.entradaOrientador);
-            this.Controls.Add(this.entradaProjeto);
             this.Controls.Add(this.groupBolsista);
             this.Controls.Add(this.entradaSemestre);
             this.Controls.Add(this.entradaDataDeNascimento);
@@ -969,7 +938,6 @@
             this.Controls.Add(this.entradaBairro);
             this.Controls.Add(this.entradaNome);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.button3);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -985,10 +953,7 @@
             this.groupBox1.PerformLayout();
             this.entradaCodigo.ResumeLayout(false);
             this.entradaCodigo.PerformLayout();
-            this.groupBolsista.ResumeLayout(false);
-            this.groupBolsista.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFoto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.groupBolsista.ResumeLayout(false);
             this.groupBolsista.PerformLayout();
@@ -1055,7 +1020,6 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.RichTextBox entradaOBS;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.CheckBox Ativar;
         private System.Windows.Forms.RadioButton radiooutra;
