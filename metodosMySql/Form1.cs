@@ -98,6 +98,13 @@ namespace metodosMySql
                     reader.Read();
                     string id_bol = reader.GetString("id");
                     reader.Close();
+                    comandoremunerado.ExecuteNonQuery();
+                    
+                }
+                reader = comandoselectremunerado.ExecuteReader();
+                reader.Read();
+                string id_bol = reader.GetString("id");
+                reader.Close();
                
                     reader2 = comandoinsertbol_proj.ExecuteReader();
                     reader2.Read();
@@ -177,7 +184,11 @@ namespace metodosMySql
                     conectar.Close();
                 }
             }
-
+            /*
+            Form3 maisumform = new Form3(this, entradaCpf.Text);
+            maisumform.ShowDialog();
+            pictureBoxFoto.ImageLocation = @"Photos\" + entradaCpf.Text + ".jpg";*/
+            //pictureBoxFoto.Load("http://i2.kym-cdn.com/photos/images/facebook/000/862/065/0e9.jpg");
         }
             catch
             {
