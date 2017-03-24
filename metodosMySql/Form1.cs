@@ -339,9 +339,10 @@ namespace metodosMySql
                 manha.Checked = false;
                 tarde.Checked = false;
                 noite.Checked = false;
-                radiooutra.Checked = false;
-                radioifce.Checked = false;
                 Ativar.Checked = false;
+
+                entradaProjeto.SelectedIndex = 0;
+                entradaOrientador.SelectedIndex = -1;
             }
             else if (dialogResult == DialogResult.No) { }
         }
