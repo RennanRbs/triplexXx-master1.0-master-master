@@ -173,6 +173,7 @@ namespace metodosMySql
             catch
             {
                 MessageBox.Show("Sem CPF, Sem busca!!");
+                conectar.Close();
             }
             
 
