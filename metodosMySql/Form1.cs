@@ -125,9 +125,9 @@ namespace metodosMySql
                             reader.Close();
                             conectar.Close();
                             buttonFoto.Enabled = true;
-                            Form3 maisumform = new Form3(this, entradaCpf.Text);
+                            Form3 maisumform = new Form3(this, entradaIDLit.Text);
                             maisumform.ShowDialog();
-                            pictureBoxFoto.ImageLocation = @"Photos\" + entradaCpf.Text + ".jpg";
+                            pictureBoxFoto.ImageLocation = @"Photos\" + entradaIDLit.Text + ".jpg";
                         }
                     }
                     catch (Exception error)
@@ -302,7 +302,7 @@ namespace metodosMySql
                         
                         
 
-                        pictureBoxFoto.ImageLocation = @"Photos\" + entradaCpf.Text + ".jpg";
+                        pictureBoxFoto.ImageLocation = @"Photos\" + entradaIDLit.Text + ".jpg";
                         buttonFoto.Enabled = true;
 
 
@@ -420,7 +420,7 @@ namespace metodosMySql
         {
             if (entradaCpf.Text != "")
             {
-                Form4 maisumoutroform = new Form4(entradaCpf.Text);
+                Form4 maisumoutroform = new Form4(entradaIDLit.Text);
                 maisumoutroform.ShowDialog();
             }
         }
@@ -436,7 +436,7 @@ namespace metodosMySql
         {
             Form3 maisumform = new Form3(this,entradaCpf.Text);
             maisumform.ShowDialog();
-            pictureBoxFoto.ImageLocation = @"Photos\" + entradaCpf.Text + ".jpg";
+            pictureBoxFoto.ImageLocation = @"Photos\" + entradaIDLit.Text + ".jpg";
             
         }
 
@@ -488,6 +488,11 @@ namespace metodosMySql
                 button5.PerformClick();
                 e.Handled = true;
             }
+        }
+
+        private void entradaIDLit_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

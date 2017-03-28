@@ -12,11 +12,11 @@ namespace metodosMySql
 {
     public partial class Form4 : Form
     {
-        private String cpf;
-        public Form4(String CPF)
+        private String ID_LIT;
+        public Form4(String ID_LIT)
         {
             InitializeComponent();
-            cpf = CPF;
+            this.ID_LIT = ID_LIT;
         }
         
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -26,7 +26,7 @@ namespace metodosMySql
 
         private void Form4_Load(object sender, EventArgs e)
         {
-            pictureBox1.ImageLocation = @"Photos\" + cpf + ".jpg";
+            pictureBox1.ImageLocation = @"Photos\" + this.ID_LIT + ".jpg";
         }
     }
 }

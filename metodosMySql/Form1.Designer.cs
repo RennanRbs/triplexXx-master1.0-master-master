@@ -270,6 +270,7 @@
             this.entradaIDLit.Name = "entradaIDLit";
             this.entradaIDLit.Size = new System.Drawing.Size(76, 24);
             this.entradaIDLit.TabIndex = 0;
+            this.entradaIDLit.TextChanged += new System.EventHandler(this.entradaIDLit_TextChanged);
             this.entradaIDLit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.entradaIDLit_KeyPress);
             // 
             // label9

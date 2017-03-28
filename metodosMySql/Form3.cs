@@ -16,12 +16,12 @@ namespace metodosMySql
     public partial class Form3 : Form
     {
         private Form1 nsei;
-        private String CPF;
-        public Form3(Form1 seila, String CPF)
+        private String ID_LIT;
+        public Form3(Form1 seila, String ID_LIT)
         {
             InitializeComponent();
             this.nsei = seila;
-            this.CPF = CPF;
+            this.ID_LIT = ID_LIT;
 
         }
         private FilterInfoCollection webcam;
@@ -53,16 +53,16 @@ namespace metodosMySql
             {
                 camera.Stop();
 
-                if (this.CPF != "")
+                if (this.ID_LIT != "")
                 {
                     try
                     {
-                        pictureBox1.Image.Save(@"Photos\" + this.CPF + ".jpg");
+                        pictureBox1.Image.Save(@"Photos\" + this.ID_LIT + ".jpg");
                     }
                     catch (Exception)
                     {
                         var folder = Directory.CreateDirectory("Photos\\");
-                        pictureBox1.Image.Save(@"Photos\" + this.CPF + ".jpg");
+                        pictureBox1.Image.Save(@"Photos\" + this.ID_LIT + ".jpg");
                     }
                 }
 
