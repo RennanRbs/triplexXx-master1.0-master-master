@@ -13,7 +13,7 @@ namespace metodosMySql
 {
     public partial class Form1 : Form
     {
-
+        bool buscou = false;
         public Form1()
         {
             InitializeComponent();
@@ -25,11 +25,19 @@ namespace metodosMySql
         //***************************************************** salvar Bolsista *****************************************************************************//
         private void button1_Click(object sender, EventArgs e)
         {
-            MySqlCommand buscacpf = new MySqlCommand("select cpf from pessoa where cpf =" + entradaCpf.Text + ";", conectar);
+            /*MySqlCommand buscacpf;
+            if (cpforiginal == "")
+            {
+               buscacpf = new MySqlCommand("select cpf from pessoa where cpf =" + entradaCpf.Text + ";", conectar);
+            }
+            else
+            {
+               buscacpf = new MySqlCommand("select cpf from pessoa where cpf =" + cpforiginal + ";", conectar);
+            }*/
             conectar.Open();
             try
             {
-                if ((string)buscacpf.ExecuteScalar() != entradaCpf.Text)
+                if (!buscou)
                 {
                     conectar.Close();
 
@@ -108,7 +116,14 @@ namespace metodosMySql
 
                             conectar.Close();
                             MessageBox.Show("Salvo com sucesso, que Topper!");
-
+                            buscou = true;
+                            conectar.Open();
+                            MySqlCommand pegarid = new MySqlCommand("select id from pessoa order by id desc limit 1", conectar);
+                            reader = pegarid.ExecuteReader();
+                            reader.Read();
+                            entradaIDLit.Text = reader.GetString("id");
+                            reader.Close();
+                            conectar.Close();
                             buttonFoto.Enabled = true;
                             Form3 maisumform = new Form3(this, entradaCpf.Text);
                             maisumform.ShowDialog();
@@ -154,12 +169,13 @@ namespace metodosMySql
                             "ativar = " + Ativar.Checked + ",radiooutra = " + radiooutra.Checked + ",radioifce = " + radioifce.Checked + ",manha = " + manha.Checked + ",tarde =" + tarde.Checked + ",noite = " + noite.Checked + "  ,email = '" + entradaEmail.Text + "', cep= '" + entradaCep.Text + "' ,cpf = '" + entradaCpf.Text + "',bairro = '" + entradaBairro.Text + "',datadenascimento = '" + entradaDataDeNascimento.Text + "', telefone = '" + entradaTelefone.Text + "',instituicaodeensino = '" + entradaINstituiçao.Text + "',matricula = '" + entradaMatriula.Text + "',semestre = '" + entradaSemestre.Text + "', celular = '" + entradaCelular.Text + "',curso = '" + entradaCurso.Text + "',  nome= '" + entradaNome.Text + "', endereco = '" + entradaEndereço.Text + "'" +
                             ",projeto_id = '" + idproj +
                             "' where bolsista_projeto.bolsista_id = bolsista.id and bolsista.pessoa_id =  pessoa.id and bolsista.id = remunerado.bolsista_id and pessoa.id ='" + entradaIDLit.Text + "';";
-
+                        
                         conectar.Open();
                         MySqlCommand comando3 = new MySqlCommand(UpdatePessoa, conectar);
 
                         if (comando3.ExecuteNonQuery() == 4) { MessageBox.Show("dados atualizados"); } else { MessageBox.Show("nao atualizado"); }
                         conectar.Close();
+                        
                     }
                     catch (Exception error)
                     {
@@ -176,7 +192,7 @@ namespace metodosMySql
                 conectar.Close();
             }
             
-
+            
             /*
             Form3 maisumform = new Form3(this, entradaCpf.Text);
             maisumform.ShowDialog();
@@ -244,7 +260,7 @@ namespace metodosMySql
                         entradaBanco.Text = reader.GetString("banco");
                         entradaOBS.Text = reader.GetString("obs");
                         entradaID.Text = reader.GetString("cod_digital");
-
+                        buscou = true;
                         string prof = reader.GetString("nomeorientador");
                         for(int i = 0; i<=entradaOrientador.Items.Count; i++)
                         {
@@ -350,9 +366,10 @@ namespace metodosMySql
                 tarde.Checked = false;
                 noite.Checked = false;
                 Ativar.Checked = false;
+                buscou = false;
 
                 entradaProjeto.SelectedIndex = 0;
-                entradaOrientador.SelectedIndex = -1;
+                entradaOrientador.SelectedIndex = 0;
                 pictureBoxFoto.ImageLocation = @"metodosMySql\Resources\" + "blank_user" + ".jpg";
                 buttonFoto.Enabled = false;
             }
@@ -395,6 +412,7 @@ namespace metodosMySql
             {
                 entradaOrientador.Items.Add(reader2.GetString("nome"));
             }
+            entradaOrientador.SelectedIndex = 0;
             conectar.Close();
         }
 
