@@ -434,7 +434,7 @@ namespace metodosMySql
 
         private void buttonFoto_Click(object sender, EventArgs e)
         {
-            Form3 maisumform = new Form3(this,entradaCpf.Text);
+            Form3 maisumform = new Form3(this,entradaIDLit.Text);
             maisumform.ShowDialog();
             pictureBoxFoto.ImageLocation = @"Photos\" + entradaIDLit.Text + ".jpg";
             
