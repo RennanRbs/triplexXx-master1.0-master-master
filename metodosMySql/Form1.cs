@@ -52,7 +52,7 @@ namespace metodosMySql
                     try
                     {
                         MySqlDataReader rdr2;
-                        string buscaidprof = "select professor.id from professor,pessoa where pessoa.id = professor.pessoa_id and pessoa.nome = '" + entradaOrientador.Text + "';";
+                        string buscaidprof = "select professors.id from professors,pessoas where pessoas.id = professors.pessoa_id and pessoas.nome = '" + entradaOrientador.Text + "';";
                         conectar.Open();
                         MySqlCommand comando2 = new MySqlCommand(buscaidprof, conectar);
                         rdr2 = comando2.ExecuteReader();
@@ -67,10 +67,10 @@ namespace metodosMySql
                         conectar.Open();
 
 
-                        MySqlCommand comandoPessoa = new MySqlCommand("INSERT INTO Pessoa(nome,email,cpf,celular,cod_digital) VALUES('" + entradaNome.Text + "','" + entradaEmail.Text + "','" + entradaCpf.Text + "','" + entradaCelular.Text + "', '" + entradaID.Text + "' )", conectar);
-                        MySqlCommand comandoselect = new MySqlCommand(" select id from pessoa order by id DESC limit 1", conectar);
+                        MySqlCommand comandoPessoa = new MySqlCommand("INSERT INTO Pessoas(nome,email,cpf,celular,cod_digital) VALUES('" + entradaNome.Text + "','" + entradaEmail.Text + "','" + entradaCpf.Text + "','" + entradaCelular.Text + "', '" + entradaID.Text + "' )", conectar);
+                        MySqlCommand comandoselect = new MySqlCommand(" select id from pessoas order by id DESC limit 1", conectar);
                         //MySqlCommand comandoselectprofessor = new MySqlCommand("SELECT id FROM bolsista order by id desc limit 1", conectar); -> comando inutil
-                        MySqlCommand comandoselectremunerado = new MySqlCommand("SELECT id FROM bolsista order by id desc limit 1", conectar);
+                        MySqlCommand comandoselectremunerado = new MySqlCommand("SELECT id FROM bolsistas order by id desc limit 1", conectar);
                         MySqlCommand comandoinsertbol_proj = new MySqlCommand("select id from projetos where nome= '" + entradaProjeto.Text + "'", conectar);
                         comandoPessoa.ExecuteNonQuery();
 
@@ -79,7 +79,7 @@ namespace metodosMySql
                         if (reader.Read())
                         {
 
-                            MySqlCommand comandoBolsista = new MySqlCommand("INSERT INTO Bolsista(pessoa_id,endereco,bairro,rg,telefone,curso,matricula,instituicaodeensino,semestre,datadenascimento,cep,manha,tarde,noite,radioifce,radiooutra,radioremunerado,radiovoluntario,obs,ativar, orientador_id)" +
+                            MySqlCommand comandoBolsista = new MySqlCommand("INSERT INTO Bolsistas(pessoa_id,endereco,bairro,rg,telefone,curso,matricula,instituicaodeensino,semestre,datadenascimento,cep,manha,tarde,noite,radioifce,radiooutra,radioremunerado,radiovoluntario,obs,ativar, orientador_id)" +
                                 " VALUES(" + reader.GetString("id") + " , '" + entradaEndereço.Text + "','" + entradaBairro.Text + "','" + entradaRg.Text + "','" + entradaTelefone.Text + "','" + entradaCurso.Text + "','" + entradaMatriula.Text + "','" + entradaINstituiçao.Text + "'" +
                                 " ,'" + entradaSemestre.Text + "','" + entradaDataDeNascimento.Text + "','" + entradaCep.Text + "'," + m + "," + t + "," + n + "," + ifce + "," + outra + ", " + remunerado + ", " + voluntario + " , '" + entradaOBS.Text + "'," + Ativar.Checked + "," + idprof + ");", conectar);
 
@@ -96,7 +96,7 @@ namespace metodosMySql
                         if (reader.Read())
                         {
 
-                            MySqlCommand comandoremunerado = new MySqlCommand("INSERT INTO remunerado(bolsista_id,agencia,conta,fonte_bolsa,banco)VALUES (" + reader.GetString("id") + ", '" + entradaAgencia.Text + "', '" + entradaConta.Text + "', '" + entradaFonteDaBolsa.Text + "', '" + entradaBanco.Text + "')", conectar);
+                            MySqlCommand comandoremunerado = new MySqlCommand("INSERT INTO remunerados(bolsista_id,agencia,conta,fonte_bolsa,banco)VALUES (" + reader.GetString("id") + ", '" + entradaAgencia.Text + "', '" + entradaConta.Text + "', '" + entradaFonteDaBolsa.Text + "', '" + entradaBanco.Text + "')", conectar);
                             reader.Close();
                             comandoremunerado.ExecuteNonQuery();
 
@@ -110,7 +110,7 @@ namespace metodosMySql
                             string id_proj = reader2.GetString("id");
                             reader2.Close();
 
-                            MySqlCommand insertbol_proj = new MySqlCommand("insert into bolsista_projeto values(default," + id_bol + "," + id_proj + ");", conectar);
+                            MySqlCommand insertbol_proj = new MySqlCommand("insert into bolsista_projetos values(default," + id_bol + "," + id_proj + ");", conectar);
                             insertbol_proj.ExecuteNonQuery();
 
 
@@ -118,7 +118,7 @@ namespace metodosMySql
                             MessageBox.Show("Salvo com sucesso, que Topper!");
                             buscou = true;
                             conectar.Open();
-                            MySqlCommand pegarid = new MySqlCommand("select id from pessoa order by id desc limit 1", conectar);
+                            MySqlCommand pegarid = new MySqlCommand("select id from pessoas order by id desc limit 1", conectar);
                             reader = pegarid.ExecuteReader();
                             reader.Read();
                             entradaIDLit.Text = reader.GetString("id");
@@ -154,7 +154,7 @@ namespace metodosMySql
                         }
                         conectar.Close();
                         MySqlDataReader rdr2;
-                        string buscaidprof = "select professor.id from professor,pessoa where pessoa.id = professor.pessoa_id and pessoa.nome = '" + entradaOrientador.Text + "';";
+                        string buscaidprof = "select professors.id from professors,pessoas where pessoas.id = professors.pessoa_id and pessoas.nome = '" + entradaOrientador.Text + "';";
                         conectar.Open();
                         MySqlCommand comando2 = new MySqlCommand(buscaidprof, conectar);
                         rdr2 = comando2.ExecuteReader();
@@ -164,11 +164,11 @@ namespace metodosMySql
                             idprof = rdr2.GetString("id");
                         }
                         conectar.Close();
-                        string UpdatePessoa = "UPDATE pessoa,bolsista,remunerado,bolsista_projeto SET cod_digital = '" + entradaID.Text + "',obs = '" + entradaOBS.Text + "',fonte_bolsa = '" + entradaFonteDaBolsa.Text + "',orientador_id = '" + idprof + "',banco = '" + entradaBanco.Text + "'," +
+                        string UpdatePessoa = "UPDATE pessoas,bolsistas,remunerados,bolsista_projetos SET cod_digital = '" + entradaID.Text + "',obs = '" + entradaOBS.Text + "',fonte_bolsa = '" + entradaFonteDaBolsa.Text + "',orientador_id = '" + idprof + "',banco = '" + entradaBanco.Text + "'," +
                             "conta = '" + entradaConta.Text + "',agencia = '" + entradaAgencia.Text + "',rg = '" + entradaRg.Text + "',radioremunerado = " + radioremunerado.Checked + ",radiovoluntario = " + radiovoluntario.Checked + "," +
                             "ativar = " + Ativar.Checked + ",radiooutra = " + radiooutra.Checked + ",radioifce = " + radioifce.Checked + ",manha = " + manha.Checked + ",tarde =" + tarde.Checked + ",noite = " + noite.Checked + "  ,email = '" + entradaEmail.Text + "', cep= '" + entradaCep.Text + "' ,cpf = '" + entradaCpf.Text + "',bairro = '" + entradaBairro.Text + "',datadenascimento = '" + entradaDataDeNascimento.Text + "', telefone = '" + entradaTelefone.Text + "',instituicaodeensino = '" + entradaINstituiçao.Text + "',matricula = '" + entradaMatriula.Text + "',semestre = '" + entradaSemestre.Text + "', celular = '" + entradaCelular.Text + "',curso = '" + entradaCurso.Text + "',  nome= '" + entradaNome.Text + "', endereco = '" + entradaEndereço.Text + "'" +
                             ",projeto_id = '" + idproj +
-                            "' where bolsista_projeto.bolsista_id = bolsista.id and bolsista.pessoa_id =  pessoa.id and bolsista.id = remunerado.bolsista_id and pessoa.id ='" + entradaIDLit.Text + "';";
+                            "' where bolsista_projetos.bolsista_id = bolsistas.id and bolsistas.pessoa_id =  pessoas.id and bolsistas.id = remunerados.bolsista_id and pessoas.id ='" + entradaIDLit.Text + "';";
                         
                         conectar.Open();
                         MySqlCommand comando3 = new MySqlCommand(UpdatePessoa, conectar);
@@ -221,15 +221,15 @@ namespace metodosMySql
                     MySqlDataReader reader;
                     conectar.Open();
 
-                    string selecionarpessoa = "select (select nome from pessoa where id = "+ entradaIDLit.Text + ") as nomebolsista," +
-                                              "(select nome from pessoa, professor, bolsista where bolsista.pessoa_id = " + entradaIDLit.Text + " and bolsista.orientador_id = professor.id and professor.pessoa_id = pessoa.id) as nomeorientador,"+
-                                              "(select nome from projetos, bolsista, bolsista_projeto where projetos.id = bolsista_projeto.projeto_id and bolsista_projeto.bolsista_id = bolsista.id and bolsista.pessoa_id = " + entradaIDLit.Text + ") as nomeprojeto," +
-                                              "bolsista.ativar,bolsista.obs,remunerado.banco ,remunerado.agencia,remunerado.conta,remunerado.fonte_bolsa," +
-                                              "bolsista.semestre, bolsista.endereco, bolsista.bairro, bolsista.rg, bolsista.instituicaodeensino,bolsista.cep ," +
-                                              "bolsista.matricula, bolsista.curso, bolsista.telefone, pessoa.cod_digital, pessoa.celular,bolsista.datadenascimento" +
-                                              " ,pessoa.email, pessoa.cpf, bolsista.manha,bolsista.tarde,bolsista.noite,bolsista.radioifce,bolsista.radiooutra,"+
-                                              "bolsista.radioremunerado,bolsista.radiovoluntario " +
-                                              " from bolsista,pessoa,remunerado where bolsista.pessoa_id =  pessoa.id and bolsista.id = remunerado.bolsista_id and ativar = False and  pessoa.id = " + entradaIDLit.Text + "; ";
+                    string selecionarpessoa = "select (select nome from pessoas where id = "+ entradaIDLit.Text + ") as nomebolsista," +
+                                              "(select nome from pessoas, professors, bolsistas where bolsistas.pessoa_id = " + entradaIDLit.Text + " and bolsistas.orientador_id = professors.id and professors.pessoa_id = pessoas.id) as nomeorientador,"+
+                                              "(select nome from projetos, bolsistas, bolsista_projetos where projetos.id = bolsista_projetos.projeto_id and bolsista_projetos.bolsista_id = bolsistas.id and bolsistas.pessoa_id = " + entradaIDLit.Text + ") as nomeprojeto," +
+                                              "bolsistas.ativar,bolsistas.obs,remunerados.banco ,remunerados.agencia,remunerados.conta,remunerados.fonte_bolsa," +
+                                              "bolsistas.semestre, bolsistas.endereco, bolsistas.bairro, bolsistas.rg, bolsistas.instituicaodeensino,bolsistas.cep ," +
+                                              "bolsistas.matricula, bolsistas.curso, bolsistas.telefone, pessoas.cod_digital, pessoas.celular,bolsistas.datadenascimento" +
+                                              " ,pessoas.email, pessoas.cpf, bolsistas.manha,bolsistas.tarde,bolsistas.noite,bolsistas.radioifce,bolsistas.radiooutra,"+
+                                              "bolsistas.radioremunerado,bolsistas.radiovoluntario " +
+                                              " from bolsistas,pessoas,remunerados where bolsistas.pessoa_id =  pessoas.id and bolsistas.id = remunerados.bolsista_id and ativar = False and  pessoas.id = " + entradaIDLit.Text + "; ";
 
 
 
@@ -404,7 +404,7 @@ namespace metodosMySql
             conectar.Close();
             entradaProjeto.SelectedIndex = 0;
             conectar.Open();
-            string professores = "select pessoa.nome from pessoa, professor where pessoa.id = professor.pessoa_id;";
+            string professores = "select pessoas.nome from pessoas, professors where pessoas.id = professors.pessoa_id;";
             MySqlCommand buscaprofessores = new MySqlCommand(professores, conectar);
             reader2 = buscaprofessores.ExecuteReader();
             
