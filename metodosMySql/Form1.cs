@@ -359,6 +359,11 @@ namespace metodosMySql
                             entradaConta.Text = reader.GetString("conta");
                             entradaFonteDaBolsa.Text = reader.GetString("fonte_bolsa");
                             entradaBanco.Text = reader.GetString("banco");
+
+                            entradaAgencia.Enabled = true;
+                            entradaConta.Enabled = true;
+                            entradaBanco.Enabled = true;
+                            entradaFonteDaBolsa.Enabled = true;
                         }
                         else
                         {
@@ -557,6 +562,30 @@ namespace metodosMySql
         }
 
         private void entradaIDLit_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioremunerado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioremunerado.Checked)
+            {
+                entradaBanco.Enabled = true;
+                entradaAgencia.Enabled = true;
+                entradaConta.Enabled = true;
+                entradaFonteDaBolsa.Enabled = true;
+            }
+            else
+            {
+                entradaBanco.Enabled = false;
+                entradaAgencia.Enabled = false;
+                entradaConta.Enabled = false;
+                entradaFonteDaBolsa.Enabled = false;
+            }
+            
+        }
+
+        private void radiovoluntario_CheckedChanged(object sender, EventArgs e)
         {
 
         }

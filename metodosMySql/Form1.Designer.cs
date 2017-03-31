@@ -572,6 +572,7 @@
             // 
             // entradaFonteDaBolsa
             // 
+            this.entradaFonteDaBolsa.Enabled = false;
             this.entradaFonteDaBolsa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.entradaFonteDaBolsa.Location = new System.Drawing.Point(145, 490);
             this.entradaFonteDaBolsa.Name = "entradaFonteDaBolsa";
@@ -610,6 +611,7 @@
             // 
             // entradaBanco
             // 
+            this.entradaBanco.Enabled = false;
             this.entradaBanco.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.entradaBanco.Location = new System.Drawing.Point(233, 519);
             this.entradaBanco.Name = "entradaBanco";
@@ -618,6 +620,7 @@
             // 
             // entradaAgencia
             // 
+            this.entradaAgencia.Enabled = false;
             this.entradaAgencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.entradaAgencia.Location = new System.Drawing.Point(204, 548);
             this.entradaAgencia.Name = "entradaAgencia";
@@ -636,6 +639,7 @@
             // 
             // entradaConta
             // 
+            this.entradaConta.Enabled = false;
             this.entradaConta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.entradaConta.Location = new System.Drawing.Point(513, 548);
             this.entradaConta.Name = "entradaConta";
@@ -835,6 +839,7 @@
             this.radioremunerado.TabIndex = 1;
             this.radioremunerado.Text = "Remunerado";
             this.radioremunerado.UseVisualStyleBackColor = true;
+            this.radioremunerado.CheckedChanged += new System.EventHandler(this.radioremunerado_CheckedChanged);
             // 
             // radiovoluntario
             // 
@@ -848,6 +853,7 @@
             this.radiovoluntario.TabStop = true;
             this.radiovoluntario.Text = "Voluntário";
             this.radiovoluntario.UseVisualStyleBackColor = true;
+            this.radiovoluntario.CheckedChanged += new System.EventHandler(this.radiovoluntario_CheckedChanged);
             // 
             // entradaProjeto
             // 
