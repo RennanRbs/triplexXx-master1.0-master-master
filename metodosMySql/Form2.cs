@@ -34,13 +34,13 @@ namespace metodosMySql
             {
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
                 DataSet ds = new DataSet();
-                MySqlCommand tabela = new MySqlCommand("Select pessoas.id, pessoas.cod_digital, pessoas.nome From pessoas, bolsistas where bolsistas.ativar = 0 and pessoas.id = bolsistas.pessoa_id;", conectar);
+                MySqlCommand tabela = new MySqlCommand("Select pessoas.id, pessoas.nome From pessoas, bolsistas where bolsistas.ativar = 0 and pessoas.id = bolsistas.pessoa_id;", conectar);
                 adapter.SelectCommand = tabela;
                 adapter.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
 
                 DataSet ds2 = new DataSet();
-                MySqlCommand tabela2 = new MySqlCommand("Select pessoas.id, pessoas.cod_digital, pessoas.nome From pessoas, bolsistas where bolsistas.ativar = 1 and pessoas.id = bolsistas.pessoa_id;", conectar);
+                MySqlCommand tabela2 = new MySqlCommand("Select pessoas.id, pessoas.nome From pessoas, bolsistas where bolsistas.ativar = 1 and pessoas.id = bolsistas.pessoa_id;", conectar);
                 adapter.SelectCommand = tabela2;
                 adapter.Fill(ds2);
                 dataGridView2.DataSource = ds2.Tables[0];
@@ -51,7 +51,7 @@ namespace metodosMySql
             {
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
                 DataSet ds = new DataSet();
-                MySqlCommand tabela = new MySqlCommand("Select id, cod_digital,nome From pessoas WHERE nome LIKE  '%"+ label1.Text +"%'  ", conectar);
+                MySqlCommand tabela = new MySqlCommand("Select id,nome From pessoas WHERE nome LIKE  '%"+ label1.Text +"%'  ", conectar);
                 adapter.SelectCommand = tabela;
                 adapter.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
@@ -114,11 +114,6 @@ namespace metodosMySql
                 }
                 conectar.Close();
             }
-        }
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }
