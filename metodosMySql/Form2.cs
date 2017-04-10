@@ -34,13 +34,13 @@ namespace metodosMySql
             {
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
                 DataSet ds = new DataSet();
-                MySqlCommand tabela = new MySqlCommand("Select pessoas.id, pessoas.nome From pessoas, bolsistas where bolsistas.ativar = 0 and pessoas.id = bolsistas.pessoa_id;", conectar);
+                MySqlCommand tabela = new MySqlCommand("Select pessoas.id, pessoas.cod_digital, pessoas.nome From pessoas, bolsistas where bolsistas.ativar = 0 and pessoas.id = bolsistas.pessoa_id;", conectar);
                 adapter.SelectCommand = tabela;
                 adapter.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
 
                 DataSet ds2 = new DataSet();
-                MySqlCommand tabela2 = new MySqlCommand("Select pessoas.id, pessoas.nome From pessoas, bolsistas where bolsistas.ativar = 1 and pessoas.id = bolsistas.pessoa_id;", conectar);
+                MySqlCommand tabela2 = new MySqlCommand("Select pessoas.id, pessoas.cod_digital, pessoas.nome From pessoas, bolsistas where bolsistas.ativar = 1 and pessoas.id = bolsistas.pessoa_id;", conectar);
                 adapter.SelectCommand = tabela2;
                 adapter.Fill(ds2);
                 dataGridView2.DataSource = ds2.Tables[0];
@@ -51,7 +51,7 @@ namespace metodosMySql
             {
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
                 DataSet ds = new DataSet();
-                MySqlCommand tabela = new MySqlCommand("Select id,nome From pessoas WHERE nome LIKE  '%"+ label1.Text +"%'  ", conectar);
+                MySqlCommand tabela = new MySqlCommand("Select id, cod_digital,nome From pessoas WHERE nome LIKE  '%"+ label1.Text +"%'  ", conectar);
                 adapter.SelectCommand = tabela;
                 adapter.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
@@ -68,30 +68,57 @@ namespace metodosMySql
         {
             Form5 login = new Form5();
             login.ShowDialog();
-            if (login.autenticarLogin){
+            if (login.autenticarLogin)
+            {
+                
+                Form6 outro = new Form6();
+                /*string cod = outro.cod;
                 string id = this.dataGridView2.CurrentRow.Cells[0].Value.ToString();
-                string comando = "UPDATE bolsistas SET ativar = 0 WHERE pessoa_id =" + id + ";";
+                string comando = "UPDATE pessoas, bolsistas SET pessoas.cod_digital = " + cod + ", bolsistas.ativar = 0 WHERE pessoas.id = " + id + " and bolsistas.pessoa_id = " + id + ";";
+                */
                 conectar.Open();
-                MySqlCommand update = new MySqlCommand(comando, conectar);
-                update.ExecuteNonQuery();
-
-                if (update.ExecuteNonQuery() == 1)
+                bool deucerto = false;
+                while (deucerto == false)
+                {
+                    //MySqlCommand update = new MySqlCommand(comando, conectar);
+                    try
+                    {
+                        outro.ShowDialog();
+                        string cod = outro.cod;
+                        string id = this.dataGridView2.CurrentRow.Cells[0].Value.ToString();
+                        string comando = "UPDATE pessoas, bolsistas SET pessoas.cod_digital = " + cod + ", bolsistas.ativar = 0 WHERE pessoas.id = " + id + " and bolsistas.pessoa_id = " + id + ";";
+                        MySqlCommand update = new MySqlCommand(comando, conectar);
+                        update.ExecuteNonQuery();
+                        deucerto = true;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Já existe um cadastro com esse codigo!");
+                    }
+                }
+                if (deucerto)
                 {
                     MySqlDataAdapter adapter = new MySqlDataAdapter();
+                    MySqlDataAdapter adapter2 = new MySqlDataAdapter();
                     DataSet ds = new DataSet();
-                    MySqlCommand tabela = new MySqlCommand("Select pessoas.id, pessoas.nome From pessoas, bolsistas where bolsistas.ativar = 0 and pessoas.id = bolsistas.pessoa_id;", conectar);
+                    MySqlCommand tabela = new MySqlCommand("Select pessoas.id, pessoas.cod_digital, pessoas.nome From pessoas, bolsistas where bolsistas.ativar = 0 and pessoas.id = bolsistas.pessoa_id;", conectar);
                     adapter.SelectCommand = tabela;
                     adapter.Fill(ds);
                     dataGridView1.DataSource = ds.Tables[0];
 
                     DataSet ds2 = new DataSet();
-                    MySqlCommand tabela2 = new MySqlCommand("Select pessoas.id, pessoas.nome From pessoas, bolsistas where bolsistas.ativar = 1 and pessoas.id = bolsistas.pessoa_id;", conectar);
-                    adapter.SelectCommand = tabela2;
-                    adapter.Fill(ds2);
+                    MySqlCommand tabela2 = new MySqlCommand("Select pessoas.id, pessoas.cod_digital, pessoas.nome From pessoas, bolsistas where bolsistas.ativar = 1 and pessoas.id = bolsistas.pessoa_id;", conectar);
+                    adapter2.SelectCommand = tabela2;
+                    adapter2.Fill(ds2);
                     dataGridView2.DataSource = ds2.Tables[0];
                 }
                 conectar.Close();
             }
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
