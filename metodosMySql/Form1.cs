@@ -52,6 +52,7 @@ namespace metodosMySql
                         if (radiooutra.Checked) { outra = true; }
                         if (radiovoluntario.Checked) { voluntario = true; }
                         if (radioremunerado.Checked) { remunerado = true; }
+                        
                         try
                         {
                             MySqlDataReader rdr2;
@@ -131,6 +132,7 @@ namespace metodosMySql
                             Form3 maisumform = new Form3(this, entradaIDLit.Text);
                             maisumform.ShowDialog();
                             pictureBoxFoto.ImageLocation = @"Photos\" + entradaIDLit.Text + ".jpg";
+
                         }
                         catch (Exception error)
                         {
@@ -182,10 +184,7 @@ namespace metodosMySql
                             rdr.Close();
                             conectar.Close();
 
-                            if(Ativar.Checked == true)
-                            {
-                                string updatecod = "update pessoas set cod_digital = 'null', where pessoas.id = " + entradaIDLit.Text + ";";
-                            }
+                            
 
                             if (idremunerado != "")
                             {
@@ -199,7 +198,14 @@ namespace metodosMySql
                                 conectar.Open();
                                 MySqlCommand comando4 = new MySqlCommand(UpdatePessoa, conectar);
 
-                                if (comando4.ExecuteNonQuery() == 4) { MessageBox.Show("dados atualizados"); } else { MessageBox.Show("nao atualizado"); }
+                                if (comando4.ExecuteNonQuery() == 4)
+                                { 
+                                    MessageBox.Show("dados atualizados");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("nao atualizado");
+                                }
                                 conectar.Close();
                             }
                             else
