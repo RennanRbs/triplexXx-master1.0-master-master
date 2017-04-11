@@ -13,7 +13,6 @@ namespace metodosMySql
 {
     public partial class Form1 : Form
     {
-        bool buscou = false;
         public Form1()
         {
             InitializeComponent();
@@ -40,7 +39,7 @@ namespace metodosMySql
                 conectar.Open();
                 try
                 {
-                    if (!buscou)
+                    if (entradaIDLit.Text == "")
                     {
                         conectar.Close();
 
@@ -120,7 +119,6 @@ namespace metodosMySql
 
                             conectar.Close();
                             MessageBox.Show("Salvo com sucesso, que Topper!");
-                            buscou = true;
                             conectar.Open();
                             MySqlCommand pegarid = new MySqlCommand("select id from pessoas order by id desc limit 1", conectar);
                             reader = pegarid.ExecuteReader();
@@ -328,7 +326,6 @@ namespace metodosMySql
                         entradaCurso.Text = reader.GetString("curso");
                         entradaOBS.Text = reader.GetString("obs");
                         entradaIDLit.Text = reader.GetString("id");
-                        buscou = true;
                         string prof = reader.GetString("nomeorientador");
                         for(int i = 0; i<=entradaOrientador.Items.Count; i++)
                         {
@@ -455,7 +452,6 @@ namespace metodosMySql
                 tarde.Checked = false;
                 noite.Checked = false;
                 Ativar.Checked = false;
-                buscou = false;
 
                 entradaProjeto.SelectedIndex = 0;
                 entradaOrientador.SelectedIndex = 0;
