@@ -85,8 +85,10 @@ namespace metodosMySql
                     {
                         outro.ShowDialog();
                         string cod = outro.cod;
+                        MessageBox.Show(cod);
+                        MessageBox.Show(outro.cod);
                         string id = this.dataGridView2.CurrentRow.Cells[0].Value.ToString();
-                        string comando = "UPDATE pessoas, bolsistas SET pessoas.cod_digital = " + cod + ", bolsistas.ativar = 0 WHERE pessoas.id = " + id + " and bolsistas.pessoa_id = " + id + ";";
+                        string comando = "UPDATE pessoas, bolsistas SET pessoas.cod_digital = '" + cod + "', bolsistas.ativar = 0 WHERE pessoas.id = " + id + " and bolsistas.pessoa_id = " + id + ";";
                         MySqlCommand update = new MySqlCommand(comando, conectar);
                         update.ExecuteNonQuery();
                         deucerto = true;

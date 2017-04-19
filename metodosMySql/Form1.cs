@@ -126,6 +126,14 @@ namespace metodosMySql
                             entradaIDLit.Text = reader.GetString("id");
                             reader.Close();
                             conectar.Close();
+                            if (Ativar.Checked)
+                            {
+                                string desativar = "update pessoas set cod_digital = null where id = " + entradaIDLit.Text + ";";
+                                conectar.Open();
+                                MySqlCommand comandodesativar = new MySqlCommand(desativar, conectar);
+                                comandodesativar.ExecuteNonQuery();
+                                conectar.Close();
+                            }
                             buttonFoto.Enabled = true;
                             Form3 maisumform = new Form3(this, entradaIDLit.Text);
                             maisumform.ShowDialog();
@@ -182,6 +190,14 @@ namespace metodosMySql
                             rdr.Close();
                             conectar.Close();
 
+                            if(Ativar.Checked)
+                            {
+                                string desativar = "update pessoas set cod_digital = null where id = " + entradaIDLit.Text + ";";
+                                conectar.Open();
+                                MySqlCommand comandodesativar = new MySqlCommand(desativar, conectar);
+                                comandodesativar.ExecuteNonQuery();
+                                conectar.Close();
+                            }
                             
 
                             if (idremunerado != "")
@@ -291,15 +307,13 @@ namespace metodosMySql
                     MySqlDataReader reader;
                     conectar.Open();
 
-                    string selecionarpessoa = "select (select nome from pessoas where cod_digital = " + entradaID.Text + ") as nomebolsista," +
-                                              "(select nome from pessoas, professors, bolsistas where pessoas.id = professors.pessoa_id and professors.id = bolsistas.orientador_id and bolsistas.pessoa_id = (select id from pessoas where cod_digital = "+ entradaID.Text +")) as nomeorientador,"+
-                                              "(select projetos.nome from projetos, bolsistas, bolsista_projetos, pessoas where projetos.id = bolsista_projetos.projeto_id and bolsista_projetos.bolsista_id = bolsistas.id and bolsistas.pessoa_id = pessoas.id and pessoas.cod_digital = "+ entradaID.Text +") as nomeprojeto," +
+                    string selecionarpessoa = "select (select nome from pessoas where cod_digital = '" + entradaID.Text + "') as nomebolsista," +
                                               "bolsistas.ativar,bolsistas.obs," +
                                               "bolsistas.semestre, bolsistas.endereco, bolsistas.bairro, bolsistas.rg, bolsistas.instituicaodeensino,bolsistas.cep ," +
                                               "bolsistas.matricula, bolsistas.curso, bolsistas.telefone, pessoas.id, pessoas.celular,bolsistas.datadenascimento" +
                                               " ,pessoas.email, pessoas.cpf, bolsistas.manha,bolsistas.tarde,bolsistas.noite,bolsistas.radioifce,bolsistas.radiooutra,"+
                                               "bolsistas.radioremunerado,bolsistas.radiovoluntario " +
-                                              " from bolsistas,pessoas where bolsistas.pessoa_id =  pessoas.id and ativar = False and pessoas.cod_digital = "+ entradaID.Text +"; ";
+                                              " from bolsistas,pessoas where bolsistas.pessoa_id =  pessoas.id and ativar = False and pessoas.cod_digital = '"+ entradaID.Text +"'; ";
 
 
 
@@ -326,29 +340,8 @@ namespace metodosMySql
                         entradaCurso.Text = reader.GetString("curso");
                         entradaOBS.Text = reader.GetString("obs");
                         entradaIDLit.Text = reader.GetString("id");
-                        string prof = reader.GetString("nomeorientador");
-                        for(int i = 0; i<=entradaOrientador.Items.Count; i++)
-                        {
-                            if (prof == entradaOrientador.Items[i].ToString())
-                            {
-                                entradaOrientador.SelectedIndex = i;
-                                
-                                break;
-                            }
-                            
-                        }
-
-                        string proj = reader.GetString("nomeprojeto");
-                        for (int i = 0; i <= entradaProjeto.Items.Count; i++)
-                        {
-                            if (proj == entradaProjeto.Items[i].ToString())
-                            {
-                                entradaProjeto.SelectedIndex = i;
-
-                                break;
-                            }
-                            
-                        }
+                        Ativar.Checked = false;
+                        
 
 
                         if (reader.GetBoolean("manha")) { manha.Checked = true; }
@@ -361,8 +354,59 @@ namespace metodosMySql
                         if (reader.GetBoolean("ativar")) { Ativar.Checked = true; }
                         reader.Close();
                         conectar.Close();
+                        
+                        string nomedoorientador = "select nome from pessoas, professors, bolsistas where pessoas.id = professors.pessoa_id and professors.id = bolsistas.orientador_id and bolsistas.pessoa_id = (select id from pessoas where cod_digital = '"+ entradaID.Text+"');";
+                        conectar.Open();
+                        MySqlCommand comandonomedoorientador = new MySqlCommand(nomedoorientador, conectar);
 
-                        string selectremunerado = "select remunerados.id, banco, agencia, conta, fonte_bolsa from pessoas, bolsistas, remunerados where bolsistas.id = remunerados.bolsista_id and bolsistas.pessoa_id = pessoas.id and pessoas.cod_digital = " + entradaID.Text + ";";
+                        reader = comandonomedoorientador.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            string prof = reader.GetString("nome");
+                            for (int i = 0; i <= entradaOrientador.Items.Count; i++)
+                            {
+                                if (prof == entradaOrientador.Items[i].ToString())
+                                {
+                                    entradaOrientador.SelectedIndex = i;
+
+                                    break;
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            entradaOrientador.SelectedIndex = 0;
+                        }
+                        conectar.Close();
+
+                        string nomedoprojeto = "select projetos.nome from projetos, bolsistas, bolsista_projetos, pessoas where projetos.id = bolsista_projetos.projeto_id and bolsista_projetos.bolsista_id = bolsistas.id and bolsistas.pessoa_id = pessoas.id and pessoas.cod_digital = '" + entradaID.Text + "';";
+                        conectar.Open();
+                        MySqlCommand comandonomedoprojeto = new MySqlCommand(nomedoprojeto, conectar);
+
+                        reader = comandonomedoprojeto.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            string proj = reader.GetString("nome");
+                            for (int i = 0; i <= entradaProjeto.Items.Count; i++)
+                            {
+                                if (proj == entradaProjeto.Items[i].ToString())
+                                {
+                                    entradaProjeto.SelectedIndex = i;
+
+                                    break;
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            entradaProjeto.SelectedIndex = 0;
+                        }
+                        conectar.Close();
+                        string selectremunerado = "select remunerados.id, banco, agencia, conta, fonte_bolsa from pessoas, bolsistas, remunerados where bolsistas.id = remunerados.bolsista_id and bolsistas.pessoa_id = pessoas.id and pessoas.cod_digital = '" + entradaID.Text + "';";
                         conectar.Open();
                         MySqlCommand comando2 = new MySqlCommand(selectremunerado, conectar);
 
