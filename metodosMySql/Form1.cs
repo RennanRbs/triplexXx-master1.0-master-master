@@ -203,7 +203,7 @@ namespace metodosMySql
                             if (idremunerado != "")
                             {
 
-                                string UpdatePessoa = "UPDATE pessoas,bolsistas,remunerados,bolsista_projetos SET obs = '" + entradaOBS.Text + "',fonte_bolsa = '" + entradaFonteDaBolsa.Text + "',orientador_id = '" + idprof + "',banco = '" + entradaBanco.Text + "'," +
+                                string UpdatePessoa = "UPDATE pessoas,bolsistas,remunerados,bolsista_projetos SET cod_digital = '" + entradaID.Text + "', obs = '" + entradaOBS.Text + "',fonte_bolsa = '" + entradaFonteDaBolsa.Text + "',orientador_id = '" + idprof + "',banco = '" + entradaBanco.Text + "'," +
                                     "conta = '" + entradaConta.Text + "',agencia = '" + entradaAgencia.Text + "',rg = '" + entradaRg.Text + "',radioremunerado = " + radioremunerado.Checked + ",radiovoluntario = " + radiovoluntario.Checked + "," +
                                     "ativar = " + Ativar.Checked + ",radiooutra = " + radiooutra.Checked + ",radioifce = " + radioifce.Checked + ",manha = " + manha.Checked + ",tarde =" + tarde.Checked + ",noite = " + noite.Checked + "  ,email = '" + entradaEmail.Text + "', cep= '" + entradaCep.Text + "' ,cpf = '" + entradaCpf.Text + "',bairro = '" + entradaBairro.Text + "',datadenascimento = '" + entradaDataDeNascimento.Text + "', telefone = '" + entradaTelefone.Text + "',instituicaodeensino = '" + entradaINstituiçao.Text + "',matricula = '" + entradaMatriula.Text + "',semestre = '" + entradaSemestre.Text + "', celular = '" + entradaCelular.Text + "',curso = '" + entradaCurso.Text + "',  nome= '" + entradaNome.Text + "', endereco = '" + entradaEndereço.Text + "'" +
                                     ",projeto_id = '" + idproj +
@@ -224,7 +224,7 @@ namespace metodosMySql
                             }
                             else
                             {
-                                string UpdatePessoa = "UPDATE pessoas,bolsistas,bolsista_projetos SET obs = '" + entradaOBS.Text + "',orientador_id = '" + idprof + "'," +
+                                string UpdatePessoa = "UPDATE pessoas,bolsistas,bolsista_projetos SET cod_digital = '" + entradaID.Text + "', obs = '" + entradaOBS.Text + "',orientador_id = '" + idprof + "'," +
                                     "rg = '" + entradaRg.Text + "',radioremunerado = " + radioremunerado.Checked + ",radiovoluntario = " + radiovoluntario.Checked + "," +
                                     "ativar = " + Ativar.Checked + ",radiooutra = " + radiooutra.Checked + ",radioifce = " + radioifce.Checked + ",manha = " + manha.Checked + ",tarde =" + tarde.Checked + ",noite = " + noite.Checked + "  ,email = '" + entradaEmail.Text + "', cep= '" + entradaCep.Text + "' ,cpf = '" + entradaCpf.Text + "',bairro = '" + entradaBairro.Text + "',datadenascimento = '" + entradaDataDeNascimento.Text + "', telefone = '" + entradaTelefone.Text + "',instituicaodeensino = '" + entradaINstituiçao.Text + "',matricula = '" + entradaMatriula.Text + "',semestre = '" + entradaSemestre.Text + "', celular = '" + entradaCelular.Text + "',curso = '" + entradaCurso.Text + "',  nome= '" + entradaNome.Text + "', endereco = '" + entradaEndereço.Text + "'" +
                                     ",projeto_id = '" + idproj +
@@ -512,7 +512,7 @@ namespace metodosMySql
         {
             passando = entradaNome.Text;
             
-            Form2 outroform = new Form2(passando);
+            Form2 outroform = new Form2(this, passando);
             outroform.Show();
             
 
@@ -659,6 +659,12 @@ namespace metodosMySql
         private void label8_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void alterarform(string digital)
+        {
+            entradaID.Text = digital;
+            button2.PerformClick();
         }
     }
 }

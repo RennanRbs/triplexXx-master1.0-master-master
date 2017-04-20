@@ -119,6 +119,8 @@
             this.Controls.Add(this.btCancelar);
             this.Controls.Add(this.btEntrar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form5";
             this.Text = "Form5";
             this.Load += new System.EventHandler(this.Form5_Load);

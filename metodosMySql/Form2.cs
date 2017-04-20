@@ -13,15 +13,16 @@ namespace metodosMySql
 {
     public partial class Form2 : Form
     {
-
+        Form1 form;
 
 
 
         MySqlConnection conectar = new MySqlConnection("Server=lamp01ppgcc.ddns.net; Database=cadastro_bolsistas_lit; Uid=controlador_lit; Pwd=123qwe!@#");
 
-        public Form2(string cor)
+        public Form2(Form1 formulario, string cor)
         {
             InitializeComponent();
+            this.form = formulario;
             label1.Text = cor;
 
         }
@@ -85,8 +86,6 @@ namespace metodosMySql
                     {
                         outro.ShowDialog();
                         string cod = outro.cod;
-                        MessageBox.Show(cod);
-                        MessageBox.Show(outro.cod);
                         string id = this.dataGridView2.CurrentRow.Cells[0].Value.ToString();
                         string comando = "UPDATE pessoas, bolsistas SET pessoas.cod_digital = '" + cod + "', bolsistas.ativar = 0 WHERE pessoas.id = " + id + " and bolsistas.pessoa_id = " + id + ";";
                         MySqlCommand update = new MySqlCommand(comando, conectar);
@@ -116,6 +115,16 @@ namespace metodosMySql
                 }
                 conectar.Close();
             }
+        }
+
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            this.form.alterarform(this.dataGridView1.CurrentRow.Cells[1].Value.ToString());
         }
     }
 }
