@@ -124,7 +124,10 @@ namespace metodosMySql
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            this.form.alterarform(this.dataGridView1.CurrentRow.Cells[1].Value.ToString());
+            if (this.dataGridView1.CurrentRow != null)
+            {
+                this.form.alterarform(this.dataGridView1.CurrentRow.Cells[1].Value.ToString());
+            }
         }
     }
 }
