@@ -19,7 +19,7 @@ namespace metodosMySql
         }
         public string passando { get; set; }
 
-        MySqlConnection conectar = new MySqlConnection("Server=lamp01ppgcc.ddns.net; Database=cadastro_bolsistas_lit; Uid=controlador_lit; Pwd=123qwe!@#");
+        MySqlConnection conectar = new MySqlConnection("Server=54.233.96.43; Database=cadastro_bolsistas_lit; Uid=adminLIT; Pwd=l17@2017");
 
         //***************************************************** salvar Bolsista *****************************************************************************//
         private void button1_Click(object sender, EventArgs e)

@@ -34,7 +34,7 @@ namespace metodosMySql
         {
             // Instancia uma nova conexão com o banco de dados
             //MySqlConnection conectar = new MySqlConnection("server=localhost;database=cadastro;uid=root;pwd=;"); // localhost
-            MySqlConnection conectar = new MySqlConnection("Server=lamp01ppgcc.ddns.net; Database=cadastro_bolsistas_lit; Uid=controlador_lit; Pwd=123qwe!@#"); // Servidor
+            MySqlConnection conectar = new MySqlConnection("Server=54.233.96.43; Database=cadastro_bolsistas_lit; Uid=adminLIT; Pwd=l17@2017"); // Servidor
             // Coleta as informações dos campos de Login
             string userid = txtUsuario.Text;
             string password = txtSenha.Text;
