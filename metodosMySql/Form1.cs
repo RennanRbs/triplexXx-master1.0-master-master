@@ -135,9 +135,14 @@ namespace metodosMySql
                                 conectar.Close();
                             }
                             buttonFoto.Enabled = true;
-                            Form3 maisumform = new Form3(this, entradaIDLit.Text);
-                            maisumform.ShowDialog();
-                            pictureBoxFoto.ImageLocation = @"Photos\" + entradaIDLit.Text + ".jpg";
+                            FilterInfoCollection webcam;
+                            webcam = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+                            if (webcam.Count != 0)
+                            {
+                                Form3 maisumform = new Form3(this, entradaIDLit.Text);
+                                maisumform.ShowDialog();
+                                pictureBoxFoto.ImageLocation = @"Photos\" + entradaIDLit.Text + ".jpg";
+                            }
 
                         }
                         catch (Exception error)
