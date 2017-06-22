@@ -30,15 +30,14 @@ namespace metodosMySql
         private void Form3_Load(object sender, EventArgs e)
         {
 
-            this.webcam = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            webcam = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             foreach (FilterInfo VideoCaptureDevice in webcam)
             {
                 comboBox1.Items.Add(VideoCaptureDevice.Name);
-            }
-
+            }            
             this.camera = new VideoCaptureDevice(webcam[0].MonikerString);
             this.camera.NewFrame += new NewFrameEventHandler(camera_NewFrame);
-            this.camera.Start();
+            camera.Start();
         }
 
         void camera_NewFrame(object sender, NewFrameEventArgs eventArgs)
@@ -86,8 +85,7 @@ namespace metodosMySql
         
         public void Form3_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.camera.Stop();
-
+            camera.Stop();
         }
 
         private void saveFileDialog2_FileOk(object sender, CancelEventArgs e)

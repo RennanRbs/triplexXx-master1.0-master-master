@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using AForge.Video;
+using AForge.Video.DirectShow;
 
 namespace metodosMySql
 {
@@ -568,10 +570,18 @@ namespace metodosMySql
 
         private void buttonFoto_Click(object sender, EventArgs e)
         {
-            Form3 maisumform = new Form3(this,entradaIDLit.Text);
-            maisumform.ShowDialog();
-            pictureBoxFoto.ImageLocation = @"Photos\" + entradaIDLit.Text + ".jpg";
-            
+            FilterInfoCollection webcam;
+            webcam = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            if (webcam.Count != 0)
+            {
+                Form3 maisumform = new Form3(this, entradaIDLit.Text);
+                maisumform.ShowDialog();
+                pictureBoxFoto.ImageLocation = @"Photos\" + entradaIDLit.Text + ".jpg";
+            }
+            else
+            {
+                MessageBox.Show("Nenhuma Webcam foi detectada.");
+            }
         }
 
         private void entradaCpf_TextChanged(object sender, EventArgs e)
