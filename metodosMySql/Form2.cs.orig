@@ -13,16 +13,15 @@ namespace metodosMySql
 {
     public partial class Form2 : Form
     {
-        Form1 form;
 
 
 
-        MySqlConnection conectar = new MySqlConnection("Server=54.233.96.43; Database=cadastro_bolsistas_lit; Uid=adminLIT; Pwd=l17@2017");
 
-        public Form2(Form1 formulario, string cor)
+        MySqlConnection conectar = new MySqlConnection("Server=lamp01ppgcc.ddns.net; Database=cadastro_bolsistas_lit; Uid=controlador_lit; Pwd=123qwe!@#");
+
+        public Form2(string cor)
         {
             InitializeComponent();
-            this.form = formulario;
             label1.Text = cor;
 
         }
@@ -52,7 +51,7 @@ namespace metodosMySql
             {
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
                 DataSet ds = new DataSet();
-                MySqlCommand tabela = new MySqlCommand("Select id, cod_digital, nome From pessoas WHERE nome LIKE  '%"+ label1.Text +"%'  ", conectar);
+                MySqlCommand tabela = new MySqlCommand("Select id, cod_digital,nome From pessoas WHERE nome LIKE  '%"+ label1.Text +"%'  ", conectar);
                 adapter.SelectCommand = tabela;
                 adapter.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
@@ -73,6 +72,10 @@ namespace metodosMySql
             {
                 
                 Form6 outro = new Form6();
+<<<<<<< HEAD
+=======
+                outro.ShowDialog();
+>>>>>>> 723a9e17399d65cea89a7aa47e0382dce411b521
                 /*string cod = outro.cod;
                 string id = this.dataGridView2.CurrentRow.Cells[0].Value.ToString();
                 string comando = "UPDATE pessoas, bolsistas SET pessoas.cod_digital = " + cod + ", bolsistas.ativar = 0 WHERE pessoas.id = " + id + " and bolsistas.pessoa_id = " + id + ";";
@@ -87,7 +90,7 @@ namespace metodosMySql
                         outro.ShowDialog();
                         string cod = outro.cod;
                         string id = this.dataGridView2.CurrentRow.Cells[0].Value.ToString();
-                        string comando = "UPDATE pessoas, bolsistas SET pessoas.cod_digital = '" + cod + "', bolsistas.ativar = 0 WHERE pessoas.id = " + id + " and bolsistas.pessoa_id = " + id + ";";
+                        string comando = "UPDATE pessoas, bolsistas SET pessoas.cod_digital = " + cod + ", bolsistas.ativar = 0 WHERE pessoas.id = " + id + " and bolsistas.pessoa_id = " + id + ";";
                         MySqlCommand update = new MySqlCommand(comando, conectar);
                         update.ExecuteNonQuery();
                         deucerto = true;
@@ -117,17 +120,9 @@ namespace metodosMySql
             }
         }
 
-        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-        }
 
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
-        {
-            if (this.dataGridView1.CurrentRow != null)
-            {
-                this.form.alterarform(this.dataGridView1.CurrentRow.Cells[1].Value.ToString());
-            }
         }
     }
 }
